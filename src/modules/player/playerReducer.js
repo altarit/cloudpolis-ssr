@@ -414,11 +414,6 @@ const ACTION_HANDLERS = {
     newTabs[index] = newTab
     return { ...state, tabs: newTabs }
   },
-  ["QWE"]: (state, action) => {
-    if (state.pos)
-      return { ...state, tabs: newTabs }
-  },
-
 }
 
 export default function playerReducer(state = initialState, action) {

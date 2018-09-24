@@ -4,7 +4,7 @@ import { NavLink, Link } from 'react-router-dom'
 
 import './Header.css'
 
-// import Auth from '../Auth'
+import Auth from '../Auth'
 
 export class Header extends React.Component {
   static propTypes = {
@@ -54,6 +54,7 @@ export class Header extends React.Component {
               </Link>
             </li>
           </ul>
+          <Auth />
         </div>
       </nav>
     )

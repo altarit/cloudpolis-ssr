@@ -4,12 +4,16 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router'
 
-// import {resizedWindow} from '../SideBar/modules/sideBar'
+import { resizedWindow } from '../SideBar/modules/sideBar'
 import { closeAllPopups, openPopup } from '../../modules/popups'
 import { establishCurrentUser } from '../../modules/auth'
 import { isServer } from '../../store'
 
 import Header from '../Header'
+import Sidebar from '../SideBar'
+import Modals from '../Modals'
+import DragDrop from '../DragDrop'
+import BottomBar from '../BottomBar'
 import Routes from '../../routes/index'
 
 import './App.css'
@@ -23,18 +27,19 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.currentState = props.store.getState().sidebar
-    this.state = this.currentState || {}
+    this.state = this.currentState
   }
 
 
   resizeWindow = () => {
-    // this.props.store.dispatch(resizedWindow())
+    this.props.store.dispatch(resizedWindow())
   }
 
   changedSideBar = () => {
     const previousState = this.currentState
     const state = this.currentState = this.props.store.getState().sidebar
     if (previousState !== state && (previousState.isOpen !== state.isOpen || previousState.mobile !== state.mobile)) {
+      console.log('changedSideBar ' + state.mobile)
       this.setState(state)
     }
   }
@@ -93,7 +98,11 @@ class App extends Component {
           </div>
         </div>
         <div className={'sidebar' + (!this.state.isOpen ? ' sidebar--open' : '')}>
+          <Sidebar />
         </div>
+        <BottomBar />
+        <Modals />
+        <DragDrop />
       </div>
     )
   }

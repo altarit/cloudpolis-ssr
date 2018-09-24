@@ -1,0 +1,126 @@
+/* Components */
+.navbar.fixed-bottom {
+  border-top: 1px solid #d5d5d5;
+  background-image: linear-gradient(#ffffff, #eeeeee 50%, #e4e4e4);
+  height: 50px;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .navbar.fixed-bottom, .player {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+div.player {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.btn-def.player__btn {
+  height: 100%;
+  min-width: 38px;
+}
+
+.btn-def.player__btn.fa-fast-backward {
+  font-size: 18px;
+  order: 0;
+}
+.btn-def.player__btn.fa-play, .btn-def.player__btn.fa-pause {
+  font-size: 22px;
+  order: 1;
+}
+.btn-def.player__btn.fa-fast-forward {
+  font-size: 18px;
+  order: 2;
+}
+.btn-def.player__btn.fa-info-circle {
+  font-size: 22px;
+  order: 3;
+}
+.btn-def.player__btn.fa-bars {
+  font-size: 22px;
+  order: 6;
+}
+
+@media (max-width: 576px) {
+  .btn-def.player__btn.fa-fast-backward {
+    display: none;
+  }
+  .btn-def.player__btn.fa-fast-forward {
+    order: 5;
+  }
+}
+
+.player__progress {
+  flex: 1 1;
+  order: 4;
+}
+
+/* Progress */
+.player__progress {
+  cursor: default;
+  height: 100%;
+  position: relative;
+  background: #dedede;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+.player__progress-loaded {
+  left: 0px;
+  background: #6a6a6a;
+  transition: none;
+  height: 2px;
+  bottom: 0px;
+  position: absolute;
+}
+
+.player__progress-played {
+  left: 0px;
+  background-color: #aaaaaa;
+  transition: none;
+  height: 100%;
+  opacity: 1;
+  position: absolute;
+}
+
+.player__progress-title {
+  top: 0px;
+  padding-left: 5px;
+  height: 20px;
+  width: calc(100% - 32px);
+  position: absolute;
+  font-size: 16px;
+  font-weight: bold;
+  overflow: hidden;
+}
+
+.player__progress-info {
+  top: 20px;
+  padding-left: 5px;
+  height: 20px;
+  width: calc(100% - 32px);
+  position: absolute;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+.player__progress-time {
+  right: 3px;
+  top: 0px;
+  position: absolute;
+}
+
+.player__progress-length {
+  right: 3px;
+  top: 20px;
+  position: absolute;
+}

@@ -1,4 +1,4 @@
-const BASE_URL = !__DEV__ ? '' : 'http://localhost'
+const BASE_URL = process.env.NODE_ENV !== 'development' ? '' : 'http://localhost'
 
 // const BASE_URL = ''
 
