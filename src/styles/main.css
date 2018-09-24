@@ -1,0 +1,43 @@
+/*
+$borderPanelColor: #d5d5d5;
+$borderPanel: 1px solid $borderPanelColor;
+$borderGradient: linear-gradient(#ffffff, #eeeeee 50%, #e4e4e4);
+ */
+
+html {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-size: 14px;
+}
+
+body {
+  overflow-y: scroll;
+/ / overflow-x: hidden;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/* Input */
+.form-search.btn-group {
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+.dropdown-menu {
+  padding: 3px 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.dropdown-menu.show {
+  display: block;
+}

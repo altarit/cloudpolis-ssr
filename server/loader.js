@@ -10,7 +10,7 @@ import { Frontload, frontloadServerRender } from 'react-frontload'
 import Loadable from 'react-loadable'
 
 import createStore from '../src/store'
-import App from '../src/app/app'
+import App from '../src/components/App/App'
 import manifest from '../build/asset-manifest.json'
 
 // Some optional Redux functions related to user authentication
@@ -84,7 +84,7 @@ export default (req, res) => {
             <Provider store={store}>
               <StaticRouter location={req.url} context={context}>
                 <Frontload isServer>
-                  <App />
+                  <App store={store} />
                 </Frontload>
               </StaticRouter>
             </Provider>

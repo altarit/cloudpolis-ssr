@@ -1,0 +1,14 @@
+.dropdown-menu .option {
+  cursor: default;
+  font-size: 16px;
+}
+
+.dropdown-menu .option a {
+  color: #212529;
+  cursor: default;
+}
+
+/* .dropdown-menu .option */
+/*@include media-breakpoint-down(xs) {*/
+/*font-size: 18px;*/
+/*}*/

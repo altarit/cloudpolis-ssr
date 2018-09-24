@@ -1,5 +1,5 @@
 import React from 'react'
-import Page from '../../components/page'
+import Page from '../../components/page/index'
 
 export default () => (
   <Page id="about" title="About" description="This is about really cool stuff.">

@@ -4,10 +4,14 @@ import { Provider } from 'react-redux'
 import Loadable from 'react-loadable'
 import { Frontload } from 'react-frontload'
 import { ConnectedRouter } from 'connected-react-router'
-import createStore from './store'
+import 'bootstrap/dist/css/bootstrap.css'
 
-import App from './app/app'
-import './index.css'
+import createStore from './store'
+import App from './components/App/App'
+
+import './styles/main.css'
+import './styles/dropdown.css'
+import './styles/buttons.css'
 
 // Create a store and get back itself and its history object
 const { store, history } = createStore()
@@ -18,7 +22,7 @@ const Application = (
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Frontload noServerRender>
-        <App />
+        <App store={store} />
       </Frontload>
     </ConnectedRouter>
   </Provider>

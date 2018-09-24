@@ -1,0 +1,46 @@
+.navbar-header {
+  border: 1px solid #d5d5d5;
+  background-image: linear-gradient(#ffffff, #eeeeee 50%, #e4e4e4);
+}
+
+.navbar-header.navbar-brand {
+  line-height: 1;
+}
+
+.navbar-header.nav-link {
+  padding-top: 15px;
+}
+
+.navbar-header.nav-link.route--active {
+  color: #000000;
+}
+
+.navbar-header.nav-link .fa {
+  display: none;
+}
+
+.navbar-header.navbar-header-mobile {
+  padding: 0;
+}
+
+.navbar-header.navbar-header-mobile .navbar-brand {
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  line-height: 1.4;
+}
+
+.navbar-header.navbar-header-mobile .nav-link {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.navbar-header.navbar-header-mobile .nav-link .fa {
+  font-size: 20px;
+  display: inline;
+}
+
+.navbar-header.navbar-header-mobile .nav-link .navbar__link-label {
+  font-size: 12px;
+}
