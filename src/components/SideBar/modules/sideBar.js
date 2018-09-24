@@ -24,21 +24,21 @@ export function resizedWindow() {
 
 const initialState = {
   isOpen: true,
-  mobile: (window.innerWidth - SIDEBAR_WIDTH) <= MOBILE_WIDTH,
+  mobile: ((typeof window === 'undefined' ? 1200 : window.innerWidth) - SIDEBAR_WIDTH) <= MOBILE_WIDTH,
   isDetailsOpen: true
 }
 
+// TODO: replace window.width hack with something normal
 export default function sidebarReducer(state = initialState, action) {
   switch (action.type) {
     case TOGGLE_SIDEBAR:
-      let contentWidth = window.innerWidth - (!state.isOpen ? SIDEBAR_WIDTH : 0)
+      let contentWidth = (typeof window === 'undefined' ? 1200 : window.innerWidth) - (!state.isOpen ? SIDEBAR_WIDTH : 0)
       return {...state, isOpen: !state.isOpen, mobile: contentWidth <= MOBILE_WIDTH}
     case TOGGLE_DETAILS:
       //let contentWidth = window.innerWidth - (!state.isOpen ? SIDEBAR_WIDTH : 0)
       return {...state, isDetailsOpen: !state.isDetailsOpen}
     case RESIZED_WINDOW:
-      let contentInnerWidth = window.innerWidth - (state.isOpen ? SIDEBAR_WIDTH : 0)
-      console.log(window.innerWidth, contentInnerWidth, MOBILE_WIDTH)
+      let contentInnerWidth = (typeof window === 'undefined' ? 1200 : window.innerWidth) - (state.isOpen ? SIDEBAR_WIDTH : 0)
       return {...state, mobile: contentInnerWidth <= MOBILE_WIDTH}
   }
   return state
