@@ -11,12 +11,10 @@ import {requestLyrics, updateLyrics} from "../modules/audioDetails"
 export class AudioDetails extends React.Component {
   static propTypes = {
     isPlaying: PropTypes.bool.isRequired,
-    mobile: PropTypes.bool.isRequired,
     isInfoEditMode: PropTypes.bool.isRequired,
     isLirycsEditMode: PropTypes.bool.isRequired,
-    sidebar: PropTypes.bool.isRequired,
     track: PropTypes.object.isRequired,
-    lyrics: PropTypes.string.isRequired,
+    lyrics: PropTypes.string,
 
     enableInfoEditMode: PropTypes.func.isRequired,
     enableLyricsEditMode: PropTypes.func.isRequired,

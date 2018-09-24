@@ -10,6 +10,7 @@ import { Frontload, frontloadServerRender } from 'react-frontload'
 import Loadable from 'react-loadable'
 
 import createStore from '../src/store'
+import createRoutes from '../src/routes'
 import App from '../src/components/App/App'
 import manifest from '../build/asset-manifest.json'
 
@@ -51,7 +52,8 @@ export default (req, res) => {
       }
 
       // Create a store (with a memory history) from our current url
-      const { store } = createStore(req.url)
+      const { store, history } = createStore(req.url)
+      const routes = createRoutes(store, history)
 
       // If the user has a cookie (i.e. they're signed in) - set them as the current user
       // Otherwise, we want to set the current state to be logged out, just in case this isn't the default
@@ -84,7 +86,7 @@ export default (req, res) => {
             <Provider store={store}>
               <StaticRouter location={req.url} context={context}>
                 <Frontload isServer>
-                  <App store={store} />
+                  <App store={store} routes={routes} />
                 </Frontload>
               </StaticRouter>
             </Provider>

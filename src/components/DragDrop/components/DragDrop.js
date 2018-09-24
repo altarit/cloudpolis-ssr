@@ -6,7 +6,7 @@ import './DragDrop.css'
 export class DragDrop extends React.Component {
   static propTypes = {
     isTrackDrag: PropTypes.bool.isRequired,
-    dragItem: PropTypes.object.isRequired,
+    dragItem: PropTypes.object,
   }
 
   constructor(props) {

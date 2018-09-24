@@ -1,0 +1,52 @@
+/* Admin */
+
+.access__table {
+  height: 60px;
+}
+
+.access-filters {
+  width: 100%;
+}
+
+.access-filters div {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.access-filters div label {
+  width: 80px;
+  text-align: right;
+  padding-right: 10px;
+}
+
+.access-filters div div input {
+  width: 100%;
+}
+
+.access-record div {
+  float: left;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.access-record .access-record__url {
+  width: 100%;
+}
+
+.access-record .access-record__user {
+  width: 35%;
+}
+
+.access-record .access-record__ip {
+  width: 30%;
+}
+
+.access-record .access-record__created {
+  width: 35%;
+}
+
+.access-record .access-record__clear-left {
+  clear: left;
+}

@@ -14,14 +14,13 @@ import Sidebar from '../SideBar'
 import Modals from '../Modals'
 import DragDrop from '../DragDrop'
 import BottomBar from '../BottomBar'
-import Routes from '../../routes/index'
 
 import './App.css'
 
 class App extends Component {
   static propTypes = {
-    routes: PropTypes.array.isRequired,
-    store: PropTypes.object.isRequired
+    routes: PropTypes.object.isRequired,
+    store: PropTypes.object.isRequired,
   }
 
   constructor(props) {
@@ -94,7 +93,7 @@ class App extends Component {
             current={this.props.location.pathname}
           />
           <div className='core-layout__viewport'>
-            <Routes />
+            {this.props.routes}
           </div>
         </div>
         <div className={'sidebar' + (!this.state.isOpen ? ' sidebar--open' : '')}>
