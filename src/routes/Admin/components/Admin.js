@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 
+import Page from '../../../components/page/index'
+
 export class Admin extends React.Component {
   static propTypes = {
     name: PropTypes.string
@@ -9,7 +11,7 @@ export class Admin extends React.Component {
 
   render() {
     return (
-      <div className='container'>
+      <Page className='container'>
         <h2>Admin: {this.props.name}</h2>
         <div>
           <Link to='/admin/access/'></Link>
@@ -17,7 +19,7 @@ export class Admin extends React.Component {
         <div>
           <Link to={`/music/libraries/`}></Link>
         </div>
-      </div>
+      </Page>
     )
   }
 }

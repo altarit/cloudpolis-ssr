@@ -1,5 +1,4 @@
 import {fetchGet, fetchPost} from '../../../modules/apiUtils'
-import {change} from 'redux-form'
 
 export const GET_COMPILATIONS_REQUEST = 'GET_COMPILATIONS_REQUEST'
 export const GET_COMPILATIONS_SUCCESS = 'GET_COMPILATIONS_SUCCESS'

@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
+import Page from '../../../components/page/index'
 import TrackList from '../../../components/TrackList'
-import {DEFAULT_PL} from '../../../modules/player/playerConstants'
+import { DEFAULT_PL } from '../../../modules/player/playerConstants'
 
 export class Artist extends React.Component {
   static propTypes = {
@@ -35,22 +36,24 @@ export class Artist extends React.Component {
 
   getAlbums = () => {
     return (
-      <ul className='libraries-list list-group'>
-        {this.props.albums.map(album =>
-          <li key={album.name}
-            className='list-group-item list-group-item-action
+      <Page className='container'>
+        <ul className='libraries-list list-group'>
+          {this.props.albums.map(album =>
+            <li key={album.name}
+                className='list-group-item list-group-item-action
                            flex-row align-items-center d-flex h-100 justify-content-between'>
-            <Link className='list-group-item-action'
-              to={`/music/libraries/${this.props.artistsLibrary}/${this.props.artistName}?album=${album.name}`}>
-              {album.name}
-            </Link>
-            <button type='button' className='btn btn-def fa'
-              data-for='moreCompilationsPopup' data-click='dropdown' data-from={album.name}>
-              ...
-            </button>
-          </li>
-        )}
-      </ul>
+              <Link className='list-group-item-action'
+                    to={`/music/libraries/${this.props.artistsLibrary}/${this.props.artistName}?album=${album.name}`}>
+                {album.name}
+              </Link>
+              <button type='button' className='btn btn-def fa'
+                      data-for='moreCompilationsPopup' data-click='dropdown' data-from={album.name}>
+                ...
+              </button>
+            </li>
+          )}
+        </ul>
+      </Page>
     )
   }
 
@@ -73,19 +76,19 @@ export class Artist extends React.Component {
         <ul className='nav'>
           <li className='nav-item'>
             <Link className='nav-link'
-              to={`/music/libraries/${this.props.artistsLibrary}/${this.props.artistName}`}>
+                  to={`/music/libraries/${this.props.artistsLibrary}/${this.props.artistName}`}>
               Main
             </Link>
           </li>
           <li className='nav-item'>
             <Link className='nav-link'
-              to={`/music/libraries/${this.props.artistsLibrary}/${this.props.artistName}?view=tracks`}>
+                  to={`/music/libraries/${this.props.artistsLibrary}/${this.props.artistName}?view=tracks`}>
               All Tracks
             </Link>
           </li>
           <li className='nav-item'>
             <Link className='nav-link'
-              to={`/music/libraries/${this.props.artistsLibrary}/${this.props.artistName}?view=albums`}>
+                  to={`/music/libraries/${this.props.artistsLibrary}/${this.props.artistName}?view=albums`}>
               Albums
             </Link>
           </li>

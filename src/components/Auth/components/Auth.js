@@ -28,12 +28,12 @@ export class Auth extends React.Component {
     this.props.hi()
   }
 
-  login = (values) => {
-    this.props.login(values.username, values.password)
+  login = (form) => {
+    this.props.login(form.username.value, form.password.value)
   }
 
-  signup = (values) => {
-    this.props.signup(values.username, values.password, values.email)
+  signup = (form) => {
+    this.props.signup(form.username.value, form.password.value, form.email.value)
   }
 
   render() {

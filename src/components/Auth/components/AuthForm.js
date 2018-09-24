@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Field, reduxForm} from 'redux-form'
 
 class AuthForm extends React.Component {
   static propTypes = {
@@ -8,28 +7,33 @@ class AuthForm extends React.Component {
     errorText: PropTypes.string,
 
     resetStatus: PropTypes.func.isRequired,
-    handleSubmit: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired
   }
 
   componentWillMount = () => {
     this.props.resetStatus()
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault()
+    this.props.onSubmit(e.target)
+  }
+
   render() {
     return (
-      <form className='login-form' onSubmit={this.props.handleSubmit}>
+      <form className='login-form' onSubmit={this.handleSubmit} method='post'>
         <div className='form-group'>
           <label htmlFor='username'>Username</label>
-          <Field name='username' component='input' type='text' className='form-control' />
+          <input name='username' type='text' className='form-control' />
         </div>
         <div className='form-group'>
           <label htmlFor='password'>Password</label>
-          <Field name='password' component='input' type='password' className='form-control' />
+          <input name='password' type='password' className='form-control' />
         </div>
         {this.props.isreg ? (
           <div className='form-group'>
             <label htmlFor='email'>Email</label>
-            <Field name='email' component='input' type='email' className='form-control' />
+            <input name='email' type='email' className='form-control' />
           </div>
         ) : null}
         <div>{this.props.errorText}</div>
@@ -44,6 +48,4 @@ class AuthForm extends React.Component {
   }
 }
 
-export default reduxForm({
-  form: 'login'
-})(AuthForm)
+export default AuthForm

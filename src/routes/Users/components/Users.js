@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 
+import Page from '../../../components/page/index'
+
 export class Users extends React.Component {
   static propTypes = {
     users: PropTypes.arrayOf(PropTypes.object),
@@ -15,7 +17,7 @@ export class Users extends React.Component {
 
   render() {
     return (
-      <div className='container'>
+      <Page className='container'>
         <h2>Users:</h2>
         <ul className='list-group'>
           {this.props.users.map(user => (
@@ -24,7 +26,7 @@ export class Users extends React.Component {
             </li>
           ))}
         </ul>
-      </div>
+      </Page>
     )
   }
 }

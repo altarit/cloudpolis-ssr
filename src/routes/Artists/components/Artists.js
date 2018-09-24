@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 
+import Page from '../../../components/page/index'
 import './Artist.css'
 import Input from '../../../components/Input'
 
@@ -25,7 +26,7 @@ export class Artists extends React.Component {
 
   render() {
     return (
-      <div className='container'>
+      <Page className='container'>
         <h2>Artists:</h2>
         <Input onChange={this.changeFilter} />
         {this.props.fetching ? (
@@ -47,7 +48,7 @@ export class Artists extends React.Component {
             )}
           </ul>
         )}
-      </div>
+      </Page>
     )
   }
 }

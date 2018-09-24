@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import Page from '../../../components/page/index'
 import './AccessLog.css'
 import Input from '../../../components/Input'
 import AccessFilterForm from './AccessFilterForm'
@@ -38,7 +39,7 @@ export class AccessLog extends React.Component {
     console.log(`changeFilter`)
     console.log(newValue.values)
 
-    this.props.getAccessLog(this.props.filters.values || {}, this.props.limit, this.props.page)
+    // this.props.getAccessLog(this.props.filters.values || {}, this.props.limit, this.props.page)
     newValue.preventDefault()
   }
 
@@ -54,7 +55,7 @@ export class AccessLog extends React.Component {
 
   render() {
     return (
-      <div className='access container'>
+      <Page className='access container'>
         <h2>Access Log</h2>
         <div className='access__top btn-toolbar'>
           <AccessFilterForm handleSubmit={this.changeFilter}/>
@@ -84,7 +85,7 @@ export class AccessLog extends React.Component {
             <Input onChange={this.limitChange} defaultValue={this.props.limit}/>
           </div>
         </div>
-      </div>
+      </Page>
     )
   }
 }

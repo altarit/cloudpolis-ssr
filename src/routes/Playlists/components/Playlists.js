@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import Page from '../../../components/page/index'
+
 import TrackList from '../../../components/TrackList'
 // import {DEFAULT_PL} from '../../../modules/player/playerConstants'
 
@@ -30,7 +32,7 @@ export class Playlists extends React.Component {
 
   render() {
     return (
-      <div className='container'>
+      <Page className='container'>
         <h2>Playlists:</h2>
         {this.props.fetching ? (
           <div>Loading...</div>
@@ -50,7 +52,7 @@ export class Playlists extends React.Component {
           </div>
         )}
 
-      </div>
+      </Page>
     )
   }
 }

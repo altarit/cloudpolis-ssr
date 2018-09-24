@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 
+import Page from '../../../components/page/index'
 import './Library.css'
 
 export class Library extends React.Component {
@@ -20,7 +21,7 @@ export class Library extends React.Component {
 
   render() {
     return (
-      <div className='libraries container'>
+      <Page className='libraries container'>
         <h2>Library: {this.props.libraryName}</h2>
         <ul className='libraries-list list-group'>
           {this.props.compilations.map(el =>
@@ -37,7 +38,7 @@ export class Library extends React.Component {
             </li>
           )}
         </ul>
-      </div>
+      </Page>
     )
   }
 }
