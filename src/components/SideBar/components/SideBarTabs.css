@@ -35,9 +35,9 @@ $tabActiveBackgroundColor: #f0f0f0;
 }
 
 .nav-tabs .nav-item .playmenu__tab.playmenu__tab_short {
-   width: 30px;
-   line-height: 42px;
- }
+  width: 30px;
+  line-height: 42px;
+}
 
 .nav-tabs .nav-item .playmenu__tab.active {
   background-color: #f0f0f0;

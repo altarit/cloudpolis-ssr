@@ -120,7 +120,7 @@ export class TrackListCustom extends React.Component {
     e.preventDefault()
     e.stopPropagation()
     let pos = this.getTrackPos(e)
-    this.setState({overPos: pos})
+    this.setState({ overPos: pos })
   }
 
   refreshRandom = () => {

@@ -1,4 +1,4 @@
-import {fetchGet} from '../../../modules/apiUtils'
+import { fetchGet } from '../../../modules/apiUtils'
 import queryString from 'query-string'
 
 export const ACCESS_LOG_CHANGE_LIMIT = 'ACCESS_LOG_CHANGE_LIMIT'
@@ -14,7 +14,7 @@ export function getAccessLog(filters, limit, page) {
       type: GET_ACCESS_LOG_REQUEST
     })
 
-    return fetchGet('/admin/access_log/?' + queryString.stringify({...filters, limit, page}))
+    return fetchGet('/admin/access_log/?' + queryString.stringify({ ...filters, limit, page }))
       .then(response => {
         dispatch({
           type: GET_ACCESS_LOG_SUCCESS,
@@ -56,15 +56,15 @@ const initialState = {
 export default function accessLogReducer(state = initialState, action) {
   switch (action.type) {
     case GET_ACCESS_LOG_REQUEST:
-      return {...state, fetching: true, errorText: null}
+      return { ...state, fetching: true, errorText: null }
     case GET_ACCESS_LOG_SUCCESS:
-      return {...state, fetching: false, requests: action.requests}
+      return { ...state, fetching: false, requests: action.requests }
     case GET_ACCESS_LOG_FAILURE:
-      return {...state, fetching: false, errorText: action.errorText}
+      return { ...state, fetching: false, errorText: action.errorText }
     case ACCESS_LOG_CHANGE_LIMIT:
-      return {...state, limit: action.limit}
+      return { ...state, limit: action.limit }
     case ACCESS_LOG_CHANGE_PAGE:
-      return {...state, page: action.page}
+      return { ...state, page: action.page }
   }
   return state
 }

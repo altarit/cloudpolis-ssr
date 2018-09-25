@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Draggable from 'react-draggable'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import Input from '../../Input'
 
 import './AudioDetails.css'
-import {requestLyrics, updateLyrics} from "../modules/audioDetails"
+import { requestLyrics, updateLyrics } from "../modules/audioDetails"
 
 export class AudioDetails extends React.Component {
   static propTypes = {
@@ -52,7 +52,7 @@ export class AudioDetails extends React.Component {
     return (
       <div>
         <div>
-          Title: <Input onChange={this.changeFilter} delay={300}/>
+          Title: <Input onChange={this.changeFilter} delay={300} />
         </div>
         <div>
           Artist:
@@ -143,7 +143,7 @@ export class AudioDetails extends React.Component {
     return (
       <Draggable
         handle='.handle'
-        defaultPosition={{x: 50, y: -450}}
+        defaultPosition={{ x: 50, y: -450 }}
         position={null}
         onStart={this.onStart}
         onDrag={this.onDrag}
@@ -163,11 +163,11 @@ export class AudioDetails extends React.Component {
             <div className='audio-details_lyrics'>
               <div>Lyrics:</div>
               <div className='audio-details_lyrics-text'>
-              {this.props.isLirycsEditMode ? (
-                <textarea defaultValue={this.props.lyrics} ref='detailsLyrics'></textarea>
-              ) : this.props.lyrics !== '<none>' ? (
-                <pre style={{height: '180px'}}>{this.props.lyrics}</pre>
-              ) : 'Loading'}
+                {this.props.isLirycsEditMode ? (
+                  <textarea defaultValue={this.props.lyrics} ref='detailsLyrics'></textarea>
+                ) : this.props.lyrics !== '<none>' ? (
+                  <pre style={{ height: '180px' }}>{this.props.lyrics}</pre>
+                ) : 'Loading'}
               </div>
             </div>
           </div>

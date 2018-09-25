@@ -1,5 +1,5 @@
-import {fetchGet, fetchPost} from '../../../modules/apiUtils'
-import {closeAllPopups} from '../../../modules/popups'
+import { fetchGet, fetchPost } from '../../../modules/apiUtils'
+import { closeAllPopups } from '../../../modules/popups'
 
 import * as types from './authConstants'
 
@@ -16,9 +16,12 @@ export function hi() {
     })
 
     return fetchGet('/hi/')
-      .then(json => {
+      .then(({ data }) => {
         dispatch({
-          type: types.AUTH_HI_SUCCESS
+          type: types.AUTH_HI_SUCCESS,
+          payload: {
+            username: data.username
+          }
         })
       })
       .catch(ex => {
@@ -38,15 +41,19 @@ export function login(username, password) {
     })
 
     let params = {
-      body: JSON.stringify({username: username, password: password})
+      body: JSON.stringify({ username: username, password: password })
     }
     return fetchPost('/login/', params)
-      .then(json => {
+      .then(({ data }) => {
         console.log('Successful request')
 
         dispatch({
           type: types.AUTH_LOGIN_SUCCESS,
-          name: json.data
+          payload: {
+            username: data.username,
+            access: data.access,
+            refresh: data.refresh
+          }
         })
         dispatch(closeAllPopups())
       })
@@ -70,7 +77,7 @@ export function signup(username, password, email) {
     })
 
     let params = {
-      body: JSON.stringify({username: username, password: password, email: email, isreg: true})
+      body: JSON.stringify({ username: username, password: password, email: email, isreg: true })
     }
     return fetchPost('/login/', params)
       .then(json => {

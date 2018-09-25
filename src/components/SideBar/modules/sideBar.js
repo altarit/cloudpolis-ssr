@@ -33,13 +33,13 @@ export default function sidebarReducer(state = initialState, action) {
   switch (action.type) {
     case TOGGLE_SIDEBAR:
       let contentWidth = (typeof window === 'undefined' ? 1200 : window.innerWidth) - (!state.isOpen ? SIDEBAR_WIDTH : 0)
-      return {...state, isOpen: !state.isOpen, mobile: contentWidth <= MOBILE_WIDTH}
+      return { ...state, isOpen: !state.isOpen, mobile: contentWidth <= MOBILE_WIDTH }
     case TOGGLE_DETAILS:
       //let contentWidth = window.innerWidth - (!state.isOpen ? SIDEBAR_WIDTH : 0)
-      return {...state, isDetailsOpen: !state.isDetailsOpen}
+      return { ...state, isDetailsOpen: !state.isDetailsOpen }
     case RESIZED_WINDOW:
       let contentInnerWidth = (typeof window === 'undefined' ? 1200 : window.innerWidth) - (state.isOpen ? SIDEBAR_WIDTH : 0)
-      return {...state, mobile: contentInnerWidth <= MOBILE_WIDTH}
+      return { ...state, mobile: contentInnerWidth <= MOBILE_WIDTH }
   }
   return state
 }

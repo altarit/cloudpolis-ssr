@@ -1,6 +1,6 @@
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import DragDrop from '../components/DragDrop'
-import {trackDragEnd} from '../../../modules/player/playerActions'
+import { trackDragEnd } from '../../../modules/player/playerActions'
 
 const mapDispatchToProps = {
   trackDragEnd

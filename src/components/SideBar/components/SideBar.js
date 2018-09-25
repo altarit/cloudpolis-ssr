@@ -6,7 +6,7 @@ import TrackListCustom from '../../TrackListCustom'
 import SidebarTopMenu from './SideBarTopMenu'
 import SideBarTabs from './SideBarTabs'
 import SideBarBottomMenu from './SideBarBottomMenu'
-import {getTabIndexByName} from '../../../modules/player/playerReducer'
+import { getTabIndexByName } from '../../../modules/player/playerReducer'
 
 export class Sidebar extends React.Component {
   static propTypes = {

@@ -1,4 +1,4 @@
-import {fetchGet, fetchPost} from '../../../modules/apiUtils'
+import { fetchGet, fetchPost } from '../../../modules/apiUtils'
 
 export const GET_COMPILATIONS_REQUEST = 'GET_COMPILATIONS_REQUEST'
 export const GET_COMPILATIONS_SUCCESS = 'GET_COMPILATIONS_SUCCESS'

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import AuthForm from './AuthForm'
 import './Auth.css'
@@ -8,7 +8,7 @@ import './Auth.css'
 export class Auth extends React.Component {
   static propTypes = {
     name: PropTypes.string,
-    // fetching: PropTypes.bool,
+    fetching: PropTypes.bool,
     errorText: PropTypes.string,
     mobile: PropTypes.bool,
 
@@ -67,7 +67,7 @@ export class Auth extends React.Component {
         ) : (
           this.props.name ? (
             <button className='btn btn-outline-secondary login__username-btn mr-2'
-              data-click='dropdown' data-for='userPopup'>
+                    data-click='dropdown' data-for='userPopup'>
               {this.props.name}
             </button>
           ) : (

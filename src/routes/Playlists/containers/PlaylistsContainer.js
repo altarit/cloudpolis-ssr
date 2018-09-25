@@ -1,8 +1,8 @@
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
-import {getPlaylists} from '../modules/playlists'
+import { getPlaylists } from '../modules/playlists'
 import Playlists from '../components/Playlists'
-import {updatePlaylist} from '../../../modules/player/playerActions'
+import { updatePlaylist } from '../../../modules/player/playerActions'
 
 const mapDispatchToProps = {
   getPlaylists,

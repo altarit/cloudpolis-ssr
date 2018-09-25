@@ -1,5 +1,5 @@
-import {fetchGet, fetchPost, fetchDelete} from '../../../modules/apiUtils'
-import {openConfirmation, openSingleInput} from '../../../modules/popups'
+import { fetchGet, fetchPost, fetchDelete } from '../../../modules/apiUtils'
+import { openConfirmation, openSingleInput } from '../../../modules/popups'
 
 export const GET_LIBRARIES_REQUEST = 'GET_LIBRARIES_REQUEST'
 export const GET_LIBRARIES_SUCCESS = 'GET_LIBRARIES_SUCCESS'
@@ -90,17 +90,17 @@ export default function librariesReducer(state = initialState, action) {
         ...state,
       }
     case CREATE_LIBRARIES_REQUEST:
-      return {...state}
+      return { ...state }
     case CREATE_LIBRARIES_SUCCESS:
-      return {...state}
+      return { ...state }
     case CREATE_LIBRARIES_FAILURE:
-      return {...state}
+      return { ...state }
     case DELETE_LIBRARY_REQUEST:
-      return {...state}
+      return { ...state }
     case DELETE_LIBRARY_SUCCESS:
-      return {...state}
+      return { ...state }
     case DELETE_LIBRARY_FAILURE:
-      return {...state}
+      return { ...state }
   }
 
   return state

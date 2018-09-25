@@ -34,7 +34,8 @@ export class BottomBar extends React.Component {
             type='button' className='btn btn-def player__btn fa fa-fast-forward'
             onClick={this.props.nextTrack}
           />
-          <button type='button' className='btn btn-def player__btn fa fa-info-circle' onClick={this.props.toggleAudioDetails} />
+          <button type='button' className='btn btn-def player__btn fa fa-info-circle'
+                  onClick={this.props.toggleAudioDetails} />
 
           <AudioPlayer />
 

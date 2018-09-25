@@ -1,6 +1,6 @@
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
-import {getCompilations, createCompilationsBulk, calculateBase} from '../modules/library'
+import { getCompilations, createCompilationsBulk, calculateBase } from '../modules/library'
 import Library from '../components/Library'
 
 const mapDispatchToProps = {

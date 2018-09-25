@@ -28,7 +28,7 @@ export class SidebarTopMenu extends React.Component {
         <button
           type='button'
           className={'btn fa btn-def ' + (this.props.muted ? 'btn-danger fa-volume-off' : 'fa-volume-up')}
-          style={{width: 40}}
+          style={{ width: 40 }}
           onClick={this.props.toggleMute}
         />
         <input

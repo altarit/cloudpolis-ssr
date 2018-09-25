@@ -15,7 +15,6 @@
   display: flex;
 }
 
-
 .audio-details-header {
   background: cadetblue;
   margin: -5px -5px 5px -5px;
@@ -30,7 +29,6 @@
 .audio-details-close {
   flex: 0 1;
 }
-
 
 .audio-details-info_row {
   display: flex;

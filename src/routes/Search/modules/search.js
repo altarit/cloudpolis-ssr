@@ -1,4 +1,4 @@
-import {fetchGet} from '../../../modules/apiUtils'
+import { fetchGet } from '../../../modules/apiUtils'
 
 export const GET_TRACKS_BY_QUERY_REQUEST = 'GET_TRACKS_BY_QUERY_REQUEST'
 export const GET_TRACKS_BY_QUERY_SUCCESS = 'GET_TRACKS_BY_QUERY_SUCCESS'

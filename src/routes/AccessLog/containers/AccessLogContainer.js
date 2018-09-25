@@ -1,7 +1,7 @@
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 import AccessLog from '../components/AccessLog'
-import {getAccessLog, changeLimit, changePage} from '../modules/accessLog'
+import { getAccessLog, changeLimit, changePage } from '../modules/accessLog'
 
 const mapDispatchToProps = {
   getAccessLog, changeLimit, changePage
@@ -12,9 +12,9 @@ const mapStateToProps = (state) => ({
   requests: state.accessLog.requests,
   fetching: state.accessLog.fetching,
   errorText: state.accessLog.errorText,
-  filters: state.form.accessFilters,
-  limit: state.accessLog.limit,
-  page: state.accessLog.page,
+  //filters: state.form.accessFilters,
+  //limit: state.accessLog.limit,
+  //page: state.accessLog.page,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccessLog)

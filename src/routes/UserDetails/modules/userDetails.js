@@ -1,4 +1,4 @@
-import {fetchGet} from '../../../modules/apiUtils'
+import { fetchGet } from '../../../modules/apiUtils'
 
 export const GET_USER_DETAILS_REQUEST = 'GET_USER_DETAILS_REQUEST'
 export const GET_USER_DETAILS_SUCCESS = 'GET_USER_DETAILS_SUCCESS'
@@ -32,11 +32,11 @@ const initialState = {}
 export default function userDetailsReducer(state = initialState, action) {
   switch (action.type) {
     case GET_USER_DETAILS_REQUEST:
-      return {fetching: true}
+      return { fetching: true }
     case GET_USER_DETAILS_SUCCESS:
-      return {...state, fetching: false, created: action.data.created, additional: action.data.additional}
+      return { ...state, fetching: false, created: action.data.created, additional: action.data.additional }
     case GET_USER_DETAILS_FAILURE:
-      return {fetching: false, errorText: action.errorText}
+      return { fetching: false, errorText: action.errorText }
   }
   return state
 }

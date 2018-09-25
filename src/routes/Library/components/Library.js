@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import Page from '../../../components/page/index'
 import './Library.css'
@@ -26,13 +26,13 @@ export class Library extends React.Component {
         <ul className='libraries-list list-group'>
           {this.props.compilations.map(el =>
             <li key={el.name}
-              className='list-group-item list-group-item-action
+                className='list-group-item list-group-item-action
                            flex-row align-items-center d-flex h-100 justify-content-between'>
               <Link to={`/music/libraries/${this.props.libraryName}/${el.name}`} className='list-group-item-action'>
                 {el.name}
               </Link>
               <button type='button' className='btn btn-def fa'
-                data-for='moreCompilationsPopup' data-click='dropdown' data-from={el.name}>
+                      data-for='moreCompilationsPopup' data-click='dropdown' data-from={el.name}>
                 ...
               </button>
             </li>

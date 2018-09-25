@@ -1,4 +1,4 @@
-import {fetchGet} from '../../../modules/apiUtils'
+import { fetchGet } from '../../../modules/apiUtils'
 
 export const GET_ARTIST_REQUEST = 'GET_ARTIST_REQUEST'
 export const GET_ARTIST_SUCCESS = 'GET_ARTIST_SUCCESS'
@@ -28,7 +28,7 @@ const initialState = {
 
 const ACTION_HANDLERS = {
   GET_ARTIST_REQUEST: (state, action) => {
-    return {...state, albums: [], tracks: [], fetching: true, q: 2}
+    return { ...state, albums: [], tracks: [], fetching: true, q: 2 }
   },
   GET_ARTIST_SUCCESS: (state, action) => {
     let tracks = action.tracks
@@ -48,10 +48,10 @@ const ACTION_HANDLERS = {
         tracks: albumsHash[albumName]
       })
     }
-    return {...state, albums: albums, tracks: tracks, fetching: false}
+    return { ...state, albums: albums, tracks: tracks, fetching: false }
   },
   GET_ARTIST_FAILED: (state, action) => {
-    return {...state, fetching: false, errorText: action.errorText}
+    return { ...state, fetching: false, errorText: action.errorText }
   },
 }
 

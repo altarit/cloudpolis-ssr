@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import './Track.css'
-import {trackLink} from '../../../modules/formatUtils'
+import { trackLink } from '../../../modules/formatUtils'
 
 export class Track extends React.Component {
   static propTypes = {
@@ -162,7 +162,7 @@ export class Track extends React.Component {
         </div>
 
         <div className='dropdown'>
-          {this.props.trackAdd && this.props.trackAdd.from === trackPID ? this.getDropdownMenu() : null }
+          {this.props.trackAdd && this.props.trackAdd.from === trackPID ? this.getDropdownMenu() : null}
         </div>
       </div>
     )

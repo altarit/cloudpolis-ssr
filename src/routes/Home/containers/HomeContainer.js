@@ -1,8 +1,8 @@
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 import Home from '../components/HomeView'
-import {getFeaturedTracks} from '../modules/home'
-import {updatePlaylist} from '../../../modules/player/playerActions'
+import { getFeaturedTracks } from '../modules/home'
+import { updatePlaylist } from '../../../modules/player/playerActions'
 
 const mapDispatchToProps = {
   getFeaturedTracks,

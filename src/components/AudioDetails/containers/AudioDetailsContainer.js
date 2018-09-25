@@ -1,14 +1,14 @@
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 import AudioDetails from '../components/AudioDetails'
-import {toggleAudioDetails} from '../../SideBar/modules/sideBar'
+import { toggleAudioDetails } from '../../SideBar/modules/sideBar'
 import {
   enableInfoEditMode,
   enableLyricsEditMode,
   disableEditMode,
   updateLyrics
 } from '../modules/audioDetails'
-import {nextTrack, prevTrack, play, pause} from '../../../modules/player/playerActions'
+import { nextTrack, prevTrack, play, pause } from '../../../modules/player/playerActions'
 
 const mapDispatchToProps = {
   enableInfoEditMode, enableLyricsEditMode, disableEditMode, updateLyrics,

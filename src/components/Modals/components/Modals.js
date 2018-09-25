@@ -53,7 +53,7 @@ export class Modals extends React.Component {
                 </div>
                 <div className='form-group'>
                   <input name='name' type='text' className='form-control' ref='singleInput' autoComplete='off'
-                         defaultValue={this.props.singleInputPopup.defaultValue}/>
+                         defaultValue={this.props.singleInputPopup.defaultValue} />
 
                   {this.props.singleInputPopup.errorText}
                 </div>

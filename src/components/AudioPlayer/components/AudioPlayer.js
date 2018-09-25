@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import {toMMSS, trackLink} from '../../../modules/formatUtils'
+import { toMMSS, trackLink } from '../../../modules/formatUtils'
 
 export class AudioPlayer extends React.Component {
   static propTypes = {
@@ -152,11 +152,11 @@ export class AudioPlayer extends React.Component {
 
         <div
           className='progress-bar player__progress-played'
-          style={{width: (this.state.time / this.state.duration * 100) + '%'}}
+          style={{ width: (this.state.time / this.state.duration * 100) + '%' }}
         />
         <div
           className='progress-bar progress-bar-striped player__progress-loaded'
-          style={{width: this.state.progress + '%'}}
+          style={{ width: this.state.progress + '%' }}
         />
         <div className='player__progress-title'>
           {this.props.title}

@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 
 import createStore from './store'
 import createRoutes from './routes'
+import { setStore } from './modules/apiUtils'
 import App from './components/App/App'
 
 import './styles/main.css'
@@ -17,6 +18,7 @@ import './styles/buttons.css'
 // Create a store and get back itself and its history object
 const { store, history } = createStore()
 const routes = createRoutes(store, history)
+setStore(store)
 
 // Running locally, we should run on a <ConnectedRouter /> rather than on a <StaticRouter /> like on the server
 // Let's also let React Frontload explicitly know we're not rendering on the server here

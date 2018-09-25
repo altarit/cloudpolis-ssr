@@ -1,7 +1,7 @@
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
-import {getLibraries, createLibrary, deleteLibrary} from '../modules/libraries'
-import {deleteCollections, deleteSongs, extractSongs} from '../modules/librariesManager'
+import { getLibraries, createLibrary, deleteLibrary } from '../modules/libraries'
+import { deleteCollections, deleteSongs, extractSongs } from '../modules/librariesManager'
 import Libraries from '../components/Libraries'
 
 const mapDispatchToProps = {

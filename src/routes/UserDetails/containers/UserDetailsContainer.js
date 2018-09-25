@@ -1,6 +1,6 @@
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
-import {getUserDetails} from '../modules/userDetails'
+import { getUserDetails } from '../modules/userDetails'
 import UserDetails from '../components/UserDetails'
 
 const mapDispatchToProps = {

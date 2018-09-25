@@ -95,20 +95,20 @@ export class OpenPlaylistDialog extends React.Component {
             ? this.props.safePlaylists.map(pl => (
               <li key={pl.name}>
                 <span onClick={this.selectFile} onDoubleClick={this.doLocalAction}>{pl.name}</span>
-                <a className='fa fa-trash-o' onClick={this.deleteFile}/>
+                <a className='fa fa-trash-o' onClick={this.deleteFile} />
               </li>
             ))
             : this.props.serverPlaylists.map(pl => (
               <li key={pl.name}>
                 <span onClick={this.selectFile} onDoubleClick={this.doRemoteAction}>{pl.name}</span>
-                <a className='fa fa-trash-o' onClick={this.deleteRemoteFile}/>
+                <a className='fa fa-trash-o' onClick={this.deleteRemoteFile} />
               </li>
             ))}
         </ul>
         <form className='filedialog__bottom' onSubmit={this.openOrSavePlaylist}>
           <div className='form-group'>
             <label>Filename</label>
-            <input type='text' className='form-control' ref='filename'/>
+            <input type='text' className='form-control' ref='filename' />
           </div>
           <div className='btn-group'>
             <button type='submit' className='btn btn-primary'>{this.props.forSave ? 'Save' : 'Open'}</button>

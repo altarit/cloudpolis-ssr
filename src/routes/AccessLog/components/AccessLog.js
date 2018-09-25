@@ -5,7 +5,7 @@ import Page from '../../../components/page/index'
 import './AccessLog.css'
 import Input from '../../../components/Input'
 import AccessFilterForm from './AccessFilterForm'
-import {changePage} from "../modules/accessLog"
+import { changePage } from "../modules/accessLog"
 
 export class AccessLog extends React.Component {
   static propTypes = {
@@ -58,7 +58,7 @@ export class AccessLog extends React.Component {
       <Page className='access container'>
         <h2>Access Log</h2>
         <div className='access__top btn-toolbar'>
-          <AccessFilterForm handleSubmit={this.changeFilter}/>
+          <AccessFilterForm handleSubmit={this.changeFilter} />
         </div>
         <div className='access__table'>
           {this.props.requests.map((request, i) => (
@@ -69,7 +69,7 @@ export class AccessLog extends React.Component {
               <div className='access-record__user'>{request.user} </div>
               <div className='access-record__ip'>{request.ip} </div>
               <div className='access-record__created'>{request.created} </div>
-              <div className='access-record__clear-left'/>
+              <div className='access-record__clear-left' />
             </div>
           ))}
         </div>
@@ -78,11 +78,11 @@ export class AccessLog extends React.Component {
             <button className='btn btn-primary' type='button'>
               Filters
             </button>
-            <Input onChange={this.pageChange} defaultValue={this.props.page}/>
+            <Input onChange={this.pageChange} defaultValue={this.props.page} />
             <button className='btn btn-primary' type='button'>
               Refresh
             </button>
-            <Input onChange={this.limitChange} defaultValue={this.props.limit}/>
+            <Input onChange={this.limitChange} defaultValue={this.props.limit} />
           </div>
         </div>
       </Page>

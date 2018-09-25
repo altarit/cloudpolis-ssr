@@ -92,6 +92,7 @@
   .track:hover {
     background-color: #b6b6b6;
   }
+
   .track:hover .track__control {
     display: block;
   }

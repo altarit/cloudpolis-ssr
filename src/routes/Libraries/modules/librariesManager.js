@@ -1,4 +1,4 @@
-import {fetchPost, fetchDelete} from '../../../modules/apiUtils'
+import { fetchPost, fetchDelete } from '../../../modules/apiUtils'
 
 export const DELETE_COLLECTIONS_REQUEST = 'DELETE_COLLECTIONS_REQUEST'
 export const DELETE_COLLECTIONS_SUCCESS = 'DELETE_COLLECTIONS_SUCCESS'
@@ -64,23 +64,23 @@ const initialState = {
 export default function librariesManagerReducer(state = initialState, action) {
   switch (action.type) {
     case DELETE_COLLECTIONS_REQUEST:
-      return {...state, fetching: true}
+      return { ...state, fetching: true }
     case DELETE_COLLECTIONS_SUCCESS:
-      return {...state, fetching: false}
+      return { ...state, fetching: false }
     case DELETE_COLLECTIONS_FAILURE:
-      return {...state, fetching: false}
+      return { ...state, fetching: false }
     case DELETE_SONGS_REQUEST:
-      return {...state, fetching: true}
+      return { ...state, fetching: true }
     case DELETE_SONGS_SUCCESS:
-      return {...state, fetching: false}
+      return { ...state, fetching: false }
     case DELETE_SONGS_FAILURE:
-      return {...state, fetching: false}
+      return { ...state, fetching: false }
     case EXTRACT_SONGS_REQUEST:
-      return {...state, fetching: true}
+      return { ...state, fetching: true }
     case EXTRACT_SONGS_SUCCESS:
-      return {...state, fetching: false}
+      return { ...state, fetching: false }
     case EXTRACT_SONGS_FAILURE:
-      return {...state, fetching: false}
+      return { ...state, fetching: false }
   }
   return state
 }

@@ -1,4 +1,4 @@
-import {fetchGet} from '../../../modules/apiUtils'
+import { fetchGet } from '../../../modules/apiUtils'
 
 export const GET_FEATURED_TRACKS_REQUEST = 'GET_FEATURED_TRACKS_REQUEST'
 export const GET_FEATURED_TRACKS_SUCCESS = 'GET_FEATURED_TRACKS_SUCCESS'

@@ -5,7 +5,7 @@ import Loadable from 'react-loadable'
 import NotFound from './not-found/index'
 import AuthenticatedRoute from '../components/authenticated-route/index'
 import UnauthenticatedRoute from '../components/unauthenticated-route/index'
-import {injectReducer} from '../modules'
+import { injectReducer } from '../modules'
 
 import Home from './Home'
 import Artists from './Artists'
@@ -79,7 +79,7 @@ function createLoadableComponent(lazyComponent, store, history) {
       return lazyComponent.getComponent()
         .then(modules => {
           if (modules[1]) {
-            injectReducer(store, history, {key: lazyComponent.name, reducer: modules[1].default})
+            injectReducer(store, history, { key: lazyComponent.name, reducer: modules[1].default })
           }
           return modules[0]
         })

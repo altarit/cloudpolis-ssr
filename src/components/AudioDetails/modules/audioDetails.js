@@ -1,7 +1,7 @@
-import {fetchGet, fetchPut} from '../../../modules/apiUtils'
-import {cloneTrack} from "../../../modules/player/playerUtils"
+import { fetchGet, fetchPut } from '../../../modules/apiUtils'
+import { cloneTrack } from "../../../modules/player/playerUtils"
 import * as types from "../../../modules/player/storage/storageConstants"
-import {lightEncode} from '../../../modules/formatUtils'
+import { lightEncode } from '../../../modules/formatUtils'
 
 export const ENABLE_INFO_EDIT_MODE = 'ENABLE_INFO_EDIT_MODE'
 export const ENABLE_LYRICS_EDIT_MODE = 'ENABLE_LYRICS_EDIT_MODE'
@@ -42,7 +42,7 @@ export function getTrackDetails(lib, compilation, track, trackId) {
     })
 
     let queryParams = {
-      body: {lib, compilation, track}
+      body: { lib, compilation, track }
     }
     return fetchGet(`/music/tracks/${trackId}?${lightEncode(lib + ';' + compilation + ';' + track)}`)
       .then(response => {
@@ -63,7 +63,7 @@ export function updateLyrics(trackId, lyrics) {
     })
 
     let params = {
-      body: JSON.stringify({lyrics: lyrics})
+      body: JSON.stringify({ lyrics: lyrics })
     }
 
     return fetchPut(`/music/tracks/${trackId}`, params)
@@ -83,19 +83,19 @@ const initialState = {
 export default function audioDetailsReducer(state = initialState, action) {
   switch (action.type) {
     case ENABLE_INFO_EDIT_MODE:
-      return {...state, isInfoEditMode: true, isLirycsEditMode: false}
+      return { ...state, isInfoEditMode: true, isLirycsEditMode: false }
     case ENABLE_LYRICS_EDIT_MODE:
-      return {...state, isInfoEditMode: false, isLirycsEditMode: true}
+      return { ...state, isInfoEditMode: false, isLirycsEditMode: true }
     case DISABLE_EDIT_MODE:
-      return {...state, isInfoEditMode: false, isLirycsEditMode: false}
+      return { ...state, isInfoEditMode: false, isLirycsEditMode: false }
     case AUDIO_DETAILS_GET_LYRICS_REQUEST:
-      return {...state, isInfoEditMode: false, isLirycsEditMode: false, lyrics: ''}
+      return { ...state, isInfoEditMode: false, isLirycsEditMode: false, lyrics: '' }
     case AUDIO_DETAILS_GET_LYRICS_SUCCESS:
-      return {...state, isInfoEditMode: false, isLirycsEditMode: false, lyrics: action.lyrics}
+      return { ...state, isInfoEditMode: false, isLirycsEditMode: false, lyrics: action.lyrics }
     case AUDIO_DETAILS_UPDATE_LYRICS_REQUEST:
-      return {...state, isInfoEditMode: false, isLirycsEditMode: false, lyrics: action.lyrics}
+      return { ...state, isInfoEditMode: false, isLirycsEditMode: false, lyrics: action.lyrics }
     case AUDIO_DETAILS_UPDATE_LYRICS_SUCCESS:
-      return {...state, isInfoEditMode: false, isLirycsEditMode: false}
+      return { ...state, isInfoEditMode: false, isLirycsEditMode: false }
   }
   return state
 }

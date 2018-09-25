@@ -1,12 +1,12 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import Page from '../../../components/page/index'
 import LogoImage from '../assets/logo.png'
 import './HomeView.css'
 import TrackList from '../../../components/TrackList'
-import {DEFAULT_PL} from '../../../modules/player/playerConstants'
+import { DEFAULT_PL } from '../../../modules/player/playerConstants'
 
 export class HomeView extends Component {
   static propTypes = {

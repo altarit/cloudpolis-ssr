@@ -1,7 +1,8 @@
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 import Sidebar from '../components/SideBar'
-import {selectTab,
+import {
+  selectTab,
   createPlaylist,
   renamePlaylist,
   closePlaylist,

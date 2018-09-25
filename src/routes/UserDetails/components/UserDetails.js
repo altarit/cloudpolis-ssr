@@ -26,10 +26,10 @@ export class UserDetails extends React.Component {
         ) : (
           <div>
             <div>
-               Created: {this.props.created}
+              Created: {this.props.created}
             </div>
           </div>
-        ) }
+        )}
       </div>
     )
   }

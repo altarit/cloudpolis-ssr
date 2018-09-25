@@ -84,20 +84,18 @@ export function handleResponse(response) {
       localStorage.removeItem('auth')
       props.store.dispatch(setUser({}))
     }
-    const token = response.headers.get('Auth')
-    if (token) {
-      try {
-        const user = jwtDecode(token)
-        console.log('Received auth token. Save in storage.')
-        console.log(user)
-        localStorage.setItem('auth', token)
-        props.store.dispatch(setUser(user))
-      } catch (e) {
-        console.error('Invalid token.', e)
-        localStorage.removeItem('auth')
-        props.store.dispatch(setUser({}))
-      }
-    }
+    // const token = response.headers.get('Auth')
+    // if (token) {
+    //   try {
+    //     const user = jwtDecode(token)
+    //     console.log(user)
+    //     props.store.dispatch(setUser(user))
+    //   } catch (e) {
+    //     console.error('Invalid token.', e)
+    //     localStorage.removeItem('auth')
+    //     props.store.dispatch(setUser({}))
+    //   }
+    // }
     return response.json()
       .then(json => {
         resolve({

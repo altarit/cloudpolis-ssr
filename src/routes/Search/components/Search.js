@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import TrackList from '../../../components/TrackList'
-import {SEARCH_PL} from '../../../modules/player/playerConstants'
+import { SEARCH_PL } from '../../../modules/player/playerConstants'
 import Input from '../../../components/Input'
 
 export class Search extends React.Component {
@@ -26,7 +26,7 @@ export class Search extends React.Component {
       <div className='container'>
         <h2>Search</h2>
         regexp is supported ^_^
-        <Input onChange={this.changeFilter} delay={300}/>
+        <Input onChange={this.changeFilter} delay={300} />
         <div>
           {!this.props.songs ? (
             <div>Loading...</div>

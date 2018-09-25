@@ -1,8 +1,9 @@
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 import AudioPlayer from '../components/AudioPlayer'
-import {play, pause, endTrack} from '../../../modules/player/playerActions'
-import {getTrackDetails} from '../../AudioDetails/modules/audioDetails'
+import { play, pause, endTrack } from '../../../modules/player/playerActions'
+import { getTrackDetails } from '../../AudioDetails/modules/audioDetails'
+
 const mapDispatchToProps = {
   play,
   pause,

@@ -32,18 +32,22 @@ div.player {
   font-size: 18px;
   order: 0;
 }
+
 .btn-def.player__btn.fa-play, .btn-def.player__btn.fa-pause {
   font-size: 22px;
   order: 1;
 }
+
 .btn-def.player__btn.fa-fast-forward {
   font-size: 18px;
   order: 2;
 }
+
 .btn-def.player__btn.fa-info-circle {
   font-size: 22px;
   order: 3;
 }
+
 .btn-def.player__btn.fa-bars {
   font-size: 22px;
   order: 6;
@@ -53,6 +57,7 @@ div.player {
   .btn-def.player__btn.fa-fast-backward {
     display: none;
   }
+
   .btn-def.player__btn.fa-fast-forward {
     order: 5;
   }

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import OpenPlaylistDialog from '../../OpenPlaylistDialog'
-import {getTabIndexByName} from '../../../modules/player/playerReducer'
+import { getTabIndexByName } from '../../../modules/player/playerReducer'
 
 export class SideBarBottomMenu extends React.Component {
   static propTypes = {
@@ -41,7 +41,7 @@ export class SideBarBottomMenu extends React.Component {
 
   renderBottomAddPopup = () => {
     if (!this.props.popups.bottomAdd) return null
-    let position = {bottom: this.props.popups.bottomAdd.ry + 20, left: this.props.popups.bottomAdd.x - 40}
+    let position = { bottom: this.props.popups.bottomAdd.ry + 20, left: this.props.popups.bottomAdd.x - 40 }
     return (
       <ul className='dropdown-menu show dropdown_fixed' style={position}>
         <li className='option'>
@@ -56,7 +56,7 @@ export class SideBarBottomMenu extends React.Component {
 
   renderBottomRemovePopup = () => {
     if (!this.props.popups.bottomRemove) return null
-    let position = {bottom: this.props.popups.bottomRemove.ry + 20, left: this.props.popups.bottomRemove.x - 85}
+    let position = { bottom: this.props.popups.bottomRemove.ry + 20, left: this.props.popups.bottomRemove.x - 85 }
     return (
       <ul className='dropdown-menu show dropdown_fixed' style={position}>
         <li className='option'>
@@ -74,7 +74,7 @@ export class SideBarBottomMenu extends React.Component {
 
   renderBottomSortPopup = () => {
     if (!this.props.popups.bottomSort) return null
-    let position = {bottom: this.props.popups.bottomSort.ry + 20, left: this.props.popups.bottomSort.x - 90}
+    let position = { bottom: this.props.popups.bottomSort.ry + 20, left: this.props.popups.bottomSort.x - 90 }
     return (
       <ul className='dropdown-menu show dropdown_fixed' style={position}>
         <li className='option' onClick={this.props.sortByTitle}>
@@ -101,7 +101,7 @@ export class SideBarBottomMenu extends React.Component {
 
   renderBottomPlaylistPopup = () => {
     if (!this.props.popups.bottomPls) return null
-    let position = {bottom: this.props.popups.bottomPls.ry + 20, left: this.props.popups.bottomPls.x - 110}
+    let position = { bottom: this.props.popups.bottomPls.ry + 20, left: this.props.popups.bottomPls.x - 110 }
     return (
       <ul className='dropdown-menu show dropdown_fixed' style={position}>
         <li className='option' data-click='custom' onClick={this.createPlaylist}>
@@ -113,10 +113,10 @@ export class SideBarBottomMenu extends React.Component {
         <li className='option' data-click='dropdown' data-for='savePlaylistDialog'>
           <span className='fa fa-fw fa-floppy-o' />Save playlist
         </li>
-        <li className='option' onClick={this.closeOpenPlaylist} data-click='custom' >
+        <li className='option' onClick={this.closeOpenPlaylist} data-click='custom'>
           <span className='fa fa-fw fa-times' />Close playlist
         </li>
-        <li className='option' onClick={this.closeOthersPlaylists} data-click='custom' >
+        <li className='option' onClick={this.closeOthersPlaylists} data-click='custom'>
           <span className='fa fa-fw fa-angle-double-down' />Close others
         </li>
         <li className='option' onClick={this.renameOpenPlaylist} data-click='custom'>
@@ -154,11 +154,11 @@ export class SideBarBottomMenu extends React.Component {
 
         {this.props.popups.openPlaylistDialog ? (
           <OpenPlaylistDialog tab={tab} forSave={false} />
-        ) : null }
+        ) : null}
 
         {this.props.popups.savePlaylistDialog ? (
           <OpenPlaylistDialog tab={tab} forSave={true} filename={openTab} />
-        ) : null }
+        ) : null}
       </div>
     )
   }

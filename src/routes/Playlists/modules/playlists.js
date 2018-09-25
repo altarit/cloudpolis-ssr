@@ -1,4 +1,4 @@
-import {fetchGet} from '../../../modules/apiUtils'
+import { fetchGet } from '../../../modules/apiUtils'
 
 export const GET_PLAYLISTS_REQUEST = 'GET_PLAYLISTS_REQUEST'
 export const GET_PLAYLISTS_SUCCESS = 'GET_PLAYLISTS_SUCCESS'
@@ -27,13 +27,13 @@ const initialState = {
 
 const ACTION_HANDLERS = {
   GET_PLAYLISTS_REQUEST: (state, action) => {
-    return {...state, fetching: true}
+    return { ...state, fetching: true }
   },
   GET_PLAYLISTS_SUCCESS: (state, action) => {
-    return {...state, playlists: action.playlists, fetching: false}
+    return { ...state, playlists: action.playlists, fetching: false }
   },
   GET_PLAYLISTS_FAILED: (state, action) => {
-    return {...state, fetching: false, errorText: action.errorText}
+    return { ...state, fetching: false, errorText: action.errorText }
   },
 }
 

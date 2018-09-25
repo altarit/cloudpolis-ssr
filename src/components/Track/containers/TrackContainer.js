@@ -1,4 +1,4 @@
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 import Track from '../components/Track'
 import {
@@ -9,7 +9,7 @@ import {
   addToPlaylist,
   trackDragStart,
 } from '../../../modules/player/playerActions'
-import {openPopup} from '../../../modules/popups'
+import { openPopup } from '../../../modules/popups'
 
 const mapDispatchToProps = {
   playSong: setTrack,

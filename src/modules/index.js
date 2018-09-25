@@ -27,7 +27,7 @@ export const makeRootReducer = (history, asyncReducers) => {
   }))
 }
 
-export const injectReducer = (store, history, {key, reducer}) => {
+export const injectReducer = (store, history, { key, reducer }) => {
   if (Object.hasOwnProperty.call(store.asyncReducers, key)) return
 
   store.asyncReducers[key] = reducer

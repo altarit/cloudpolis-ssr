@@ -62,7 +62,7 @@ export class SideBarTabs extends React.Component {
 
         <div className='playmenu__tabs-center'>
           <ul className='nav nav-tabs playmenu__tabs-list'
-              style={{marginLeft: -this.props.scrolledTabs * 70}}
+              style={{ marginLeft: -this.props.scrolledTabs * 70 }}
               data-click='none'>
             {this.getTabs()}
 
