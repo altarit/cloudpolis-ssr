@@ -1,0 +1,172 @@
+/*
+$sidebarColor: red;
+$topMenuColor: #dddddd;
+$playMenuListColor: #f0f0f0;
+$playMenuStatusColor: #dddddd;
+$playMenuBottomColor: #dddddd;
+$panelBorder: 1px solid #7d7d7d;
+*/
+
+/* SideBar */
+.sidebar {
+  border-left: #dddddd;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  position: fixed;
+  width: 360px;
+  max-width: 100%;
+  top: 0px;
+  bottom: 50px;
+  right: 0px;
+  transition: right 0.3s ease-out;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar--open {
+  right: -360px;
+  box-shadow: none;
+}
+
+.sidebar__widget {
+  height: 100%;
+  margin: 0
+}
+
+.playmenu {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+.playmenu__top {
+  background-color: #dddddd;
+  flex: 0 1;
+  min-height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.playmenu__tabs {
+  flex: 0 1;
+}
+
+.playmenu__contaner {
+  background-color: #7d7d7d;
+  flex: 1 1 auto;
+  display: flex;
+  flex-flow: column;
+}
+
+.playmenu__list-header_title {
+  flex: 1 1 auto;
+}
+
+.playmenu__list-header {
+  background-color: #dddddd;
+  text-align: center;
+  line-height: 34px;
+  flex: 0 0 34px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.playmenu__list-header_control {
+
+}
+
+.playmenu__list {
+  background-color: #f0f0f0;
+  position: relative;
+  flex: 1 1 auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin-bottom: 0;
+}
+
+.playmenu__list-space {
+  height: 150px;
+}
+
+.playmenu__list-droppable {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.playmenu__list-drop-tracks {
+  background-color: #8fa5ce;
+  opacity: 0.2;
+  margin-top: 34px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 999990;
+}
+
+.playmenu__list-basket {
+  background-color: #ce5ea3;
+  opacity: 0.2;
+  position: absolute;
+  z-index: 999993;
+
+  bottom: 0;
+  width: 100%;
+  height: 135px;
+}
+
+.playmenu__status {
+  background-color: #dddddd;
+  flex: 0 1;
+  min-height: 20px;
+  text-align: center;
+}
+
+.playmenu__bottom {
+  background-color: #dddddd;
+  flex: 0 1;
+  min-height: 32px;
+  padding-left: 5px;
+  display: flex;
+  align-content: center;
+}
+
+/* Button popups */
+.playmenu__bottom .dropdown-menu {
+  left: 10px;
+  top: auto;
+  bottom: 40px;
+  font-size: 16px;
+  min-width: 200px;
+}
+
+.playmenu__top button {
+  height: 100%;
+  width: 40px;
+  font-size: 16px;
+}
+
+.playmenu__bottom button {
+  height: 100%;
+  width: auto;
+  margin: 0 7px;
+}
+
+.playmenu__top-empty {
+  flex: 1 1 auto;
+}
+
+.dropdown_fixed {
+  position: fixed;
+}
+
+.playmenu__volume-slider {
+  display: inline-block;
+  max-width: 80px;
+  margin: 5px;
+}
+
+.tracklist_mini {
+  margin-bottom: 40px;
+}

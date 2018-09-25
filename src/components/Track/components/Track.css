@@ -1,0 +1,115 @@
+/* Tracklist */
+.track {
+  border-radius: 2px;
+  list-style-type: none;
+  margin-left: -40px;
+  cursor: default;
+  min-width: 300px;
+  overflow: visible;
+  white-space: nowrap;
+  height: 50px;
+  padding-right: 5px;
+  display: flex;
+  flex-flow: row;
+}
+
+.track__cover {
+  flex: 0 1;
+  min-width: 32px;
+  height: 32px;
+  text-align: center;
+  padding-top: 8px;
+  vertical-align: top;
+  cursor: pointer;
+}
+
+.track__cover span {
+  width: 100%;
+  height: 100%;
+}
+
+.track__info {
+  flex: 1 1 auto;
+  overflow: hidden;
+  height: 48px;
+}
+
+.track__title {
+  font-size: 14pt;
+}
+
+.track__artist {
+  font-size: 10pt;
+}
+
+.track__control {
+  flex: 0 1;
+  display: none;
+  padding-top: 6px;
+}
+
+.track__end {
+  flex: 0 1;
+}
+
+/* Tracklist for sidebar*/
+
+.playmenu__list {
+  margin-left: 0px;
+}
+
+.playmenu__list .track {
+  height: 40px;
+}
+
+.playmenu__list .track__info {
+  overflow: hidden;
+  width: 240px;
+  white-space: nowrap;
+}
+
+.playmenu__list .track__title {
+  font-size: 10pt;
+  width: 230px;
+}
+
+.playmenu__list .track__artist {
+  font-size: 8pt;
+  width: 230px;
+}
+
+.playing {
+  background-color: #dfdfdf;
+}
+
+@media (max-width: 576px) {
+  .track .track__control {
+    display: block;
+  }
+}
+
+@media (min-width: 577px) {
+  .track:hover {
+    background-color: #b6b6b6;
+  }
+
+  .track:hover .track__control {
+    display: block;
+  }
+}
+
+.playing .track__control {
+  display: block;
+}
+
+.track__control button {
+  background: none;
+}
+
+.track_dropdown {
+  position: absolute;
+  top: -20px;
+  right: 70px;
+  left: auto;
+  width: 200px;
+}

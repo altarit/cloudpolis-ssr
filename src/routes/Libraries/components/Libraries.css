@@ -1,0 +1,10 @@
+.libraries-list .list-group-item {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.libraries-list .list-group-item .list-group-item-action {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-bottom: 0;
+}

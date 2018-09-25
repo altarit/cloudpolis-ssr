@@ -1,0 +1,72 @@
+/*
+$playMenuTabsColor: #aaaaaa;
+$tabBorder: 1px solid #7d7d7d;
+$tabBackgroundColor: #999999;
+$tabPanelBackgroundColor: #909090;
+$tabActiveBackgroundColor: #f0f0f0;
+*/
+
+/* Tab */
+.playmenu__tabs {
+  background-color: #aaaaaa;
+  min-height: 42px;
+  display: flex;
+  flex-flow: row;
+}
+
+.nav-tabs {
+  border-bottom: none;
+}
+
+.nav-tabs .nav-item .playmenu__tab {
+  background-color: #999999;
+  cursor: pointer;
+  user-select: none;
+  width: 70px;
+  height: 42px;
+  padding: 0px 1px;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  border-top: 1px solid #7d7d7d;
+  border-left: 1px solid #7d7d7d;
+  border-right: 1px solid #7d7d7d;
+}
+
+.nav-tabs .nav-item .playmenu__tab.playmenu__tab_short {
+  width: 30px;
+  line-height: 42px;
+}
+
+.nav-tabs .nav-item .playmenu__tab.active {
+  background-color: #f0f0f0;
+}
+
+.playmenu__tab.current {
+  font-weight: bold;
+}
+
+.playmenu__tabs-control {
+  height: 40px;
+  min-width: 26px;
+}
+
+.playmenu__tabs-center {
+  overflow: hidden;
+}
+
+.playmenu__tabs-list {
+  width: 3000px;
+  transition: margin-left 0.15s ease-out;
+}
+
+.playmenu__tabs .dropdown-menu {
+  left: -300px;
+  width: 295px;
+}
+
+.playmenu__tabs-dropdown .playmenu__tab {
+  line-height: 1;
+  padding: 7px;
+}
