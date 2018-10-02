@@ -10,6 +10,7 @@ import { injectReducer } from '../modules'
 import Home from './Home'
 import Artists from './Artists'
 import Artist from './Artist'
+import CRM from './CRM'
 import Search from './Search'
 import Admin from './Admin'
 import Users from './Users'
@@ -59,6 +60,7 @@ export const createRoutes = (store, history) => [
   Home,
   Artists,
   Artist,
+  CRM(store, history),
   Search(store, history),
   Admin(store, history),
   Users(store, history),
