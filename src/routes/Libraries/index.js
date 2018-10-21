@@ -3,12 +3,13 @@ import { injectReducer } from '../../modules'
 export default (store, history) => ({
   path: '/music/libraries',
   name: 'libraries',
+  modules: ['libraries'],
   getComponent() {
     console.log('...loading libraries')
     return Promise.all([
-      import('./containers/LibrariesContainer'),
-      import('./modules/libraries'),
-      import('./modules/librariesManager'),
+      import(/* webpackChunkName: "libraries" */ './containers/LibrariesContainer'),
+      import(/* webpackChunkName: "libraries" */ './modules/libraries'),
+      import(/* webpackChunkName: "libraries" */ './modules/librariesManager'),
     ])
       .then(modules => {
         console.log('...loaded libraries', store, history)

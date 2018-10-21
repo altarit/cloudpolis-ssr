@@ -1,10 +1,11 @@
 export default {
   path: '/music/artists',
   name: 'artists',
-  getComponent() {
+  modules: ['artists'],
+  getComponent () {
     return Promise.all([
-      import('./containers/ArtistsContainer'),
-      import('./modules/artists'),
+      import(/* webpackChunkName: "artists" */ './containers/ArtistsContainer'),
+      import(/* webpackChunkName: "artists" */ './modules/artists'),
     ])
   }
 }

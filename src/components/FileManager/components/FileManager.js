@@ -6,9 +6,10 @@ import './FileManager.css'
 export class FileManager extends Component {
   static propTypes = {
     owner: string.isRequired,
-    path: string.isRequired,
-    files: arrayOf(string).isRequired,
-    drives: arrayOf(object).isRequired,
+    path: string,
+    defaultPath: string,
+    files: arrayOf(object),
+    drives: arrayOf(object),
 
     onChange: func.isRequired,
     onSubmit: func.isRequired,
@@ -29,7 +30,7 @@ export class FileManager extends Component {
   }
 
   componentDidMount () {
-    this.props.onChange()
+    this.props.onChange(this.props.defaultPath)
   }
 
   componentDidUpdate () {
@@ -48,7 +49,7 @@ export class FileManager extends Component {
   }
 
   render () {
-    const { files, drives, selectedDrive } = this.props
+    const { files, drives, selectedDrive, defaultPath } = this.props
 
     return (
       <div className='dropdown show dropdown-menu filemanager' data-click='none'>
@@ -60,20 +61,33 @@ export class FileManager extends Component {
               <option key={mountpoint} value={mountpoint}>{mountpoint}</option>
             ))}
           </select>
-          <input name='path' type='text' className='form-control' autoComplete='off' ref='path' />
+          <input
+            name='path'
+            type='text'
+            className='form-control'
+            autoComplete='off'
+            defaultValue={defaultPath}
+            ref='path'
+          />
         </form>
 
         <div onClick={this.openParentDirectory}>Parent</div>
         <div className='filemanager__dirs'>
-          {files && files.map(secondPath => (
-            <div key={secondPath} onClick={() => this.selectSecondPath(secondPath)}>
-              {secondPath}
+          {files && files.map(file => (
+            <div key={file.name} onClick={() => this.selectSecondPath(file.name)}>
+              {file.name}
             </div>
           ))}
         </div>
 
         <div className='filemanager__bottom btn-group'>
-          <button className='btn btn-outline-secondary mr-2' onClick={this.handleSelect}>Select this directory</button>
+          <button
+            className='btn btn-outline-secondary mr-2'
+            onClick={this.handleSelect}
+            data-click='closeall'
+          >
+            Select this directory
+          </button>
         </div>
       </div>
     )
