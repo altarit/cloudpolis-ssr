@@ -17,7 +17,7 @@ const mapStateToProps = (state, props) => ({
   isCreationAvailable: state.createImportSession.isCreationAvailable,
   isReadingAvailable: state.createImportSession.isReadingAvailable,
   checkedFiles: state.createImportSession.checkedFiles,
-  fileManagerPopup: state.createImportSession.importFileManager,
+  fileManagerPopup: state.popups.importFileManager,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateImportSession)

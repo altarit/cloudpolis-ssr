@@ -4,8 +4,8 @@ export default (store, history) => ({
   modules: ['createImportSession'],
   getComponent() {
     return Promise.all([
-      import(/* webpackChunkName: "import" */ './containers/CreateImportSessionContainer'),
-      import(/* webpackChunkName: "import" */ './modules/createImportSession'),
+      import(/* webpackChunkName: "createImportSession" */ './containers/CreateImportSessionContainer'),
+      import(/* webpackChunkName: "createImportSession" */ './modules/createImportSession'),
     ])
   }
 })

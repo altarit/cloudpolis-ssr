@@ -12,11 +12,8 @@ export default (store, history) => ({
       import(/* webpackChunkName: "manager" */ './modules/librariesManager'),
     ])
       .then(modules => {
-        console.log('...loaded manager', store, history)
         injectReducer(store, history, { key: 'manager', reducer: modules[1].default })
-        console.log('...injected manager reducer')
         injectReducer(store, history, { key: 'librariesManager', reducer: modules[2].default })
-        console.log('...injected librariesManager reducer')
         return [modules[0]]
       })
   }

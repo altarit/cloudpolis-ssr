@@ -1,4 +1,9 @@
-import { fetchGet, fetchPost } from '../../../../modules/apiUtils'
+import { fetchDelete, fetchGet, fetchPost } from '../../../../modules/apiUtils'
+import {
+  DELETE_SONGS_REQUEST,
+  DELETE_SONGS_SUCCESS,
+  EXTRACT_SONGS_REQUEST, EXTRACT_SONGS_SUCCESS
+} from "../../../Libraries/modules/librariesManager"
 
 export const GET_COMPILATIONS_REQUEST = 'GET_COMPILATIONS_REQUEST'
 export const GET_COMPILATIONS_SUCCESS = 'GET_COMPILATIONS_SUCCESS'
@@ -7,6 +12,14 @@ export const GET_COMPILATIONS_FAILURE = 'GET_COMPILATIONS_FAILURE'
 export const IMPORT_GET_SESSIONS_REQUEST = 'IMPORT_GET_SESSIONS_REQUEST'
 export const IMPORT_GET_SESSIONS_SUCCESS = 'IMPORT_GET_SESSIONS_SUCCESS'
 export const IMPORT_GET_SESSIONS_FAILURE = 'IMPORT_GET_SESSIONS_FAILURE'
+
+export const LIBRARY_MANAGER_DELETE_TRACKS_REQUEST = 'LIBRARY_MANAGER_DELETE_TRACKS_REQUEST'
+export const LIBRARY_MANAGER_DELETE_TRACKS_SUCCESS = 'LIBRARY_MANAGER_DELETE_TRACKS_SUCCESS'
+export const LIBRARY_MANAGER_DELETE_TRACKS_FAILURE = 'LIBRARY_MANAGER_DELETE_TRACKS_FAILURE'
+
+export const LIBRARY_MANAGER_EXTRACT_TRACKS_REQUEST = 'LIBRARY_MANAGER_EXTRACT_TRACKS_REQUEST'
+export const LIBRARY_MANAGER_EXTRACT_TRACKS_SUCCESS = 'LIBRARY_MANAGER_EXTRACT_TRACKS_SUCCESS'
+export const LIBRARY_MANAGER_EXTRACT_TRACKS_FAILURE = 'LIBRARY_MANAGER_EXTRACT_TRACKS_FAILURE'
 
 export function getCompilations (libraryName) {
   return (dispatch) => {
@@ -38,6 +51,36 @@ export function getImportSessions (libraryName) {
         dispatch({
           type: IMPORT_GET_SESSIONS_SUCCESS,
           payload: data
+        })
+      })
+  }
+}
+
+export function deleteLibraryTracks() {
+  return (dispatch) => {
+    dispatch({
+      type: DELETE_SONGS_REQUEST
+    })
+
+    fetchDelete(`/music/songs`)
+      .then(response => {
+        dispatch({
+          type: DELETE_SONGS_SUCCESS
+        })
+      })
+  }
+}
+
+export function extractLibraryTracks() {
+  return (dispatch) => {
+    dispatch({
+      type: EXTRACT_SONGS_REQUEST
+    })
+
+    fetchPost(`/music/extract`)
+      .then(response => {
+        dispatch({
+          type: EXTRACT_SONGS_SUCCESS
         })
       })
   }

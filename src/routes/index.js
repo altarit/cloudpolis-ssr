@@ -17,9 +17,10 @@ import Users from './Users'
 import UserDetails from './UserDetails'
 import AccessLog from './AccessLog'
 import Libraries from './Libraries'
+import Playlists from './Playlists'
 import LibraryManager from './Manager/LibraryManager'
 import CreateImportSession from './Manager/CreateImportSession'
-import Playlists from './Playlists'
+import ImportSession from './Manager/Import'
 
 // const Homepage = Loadable({
 //   loader: () => import(/* webpackChunkName: "homepage" */ './Home/containers/HomeContainer'),
@@ -61,16 +62,18 @@ export const createRoutes = (store, history) => [
   Home,
   Artists,
   Artist,
-  Manager(store, history),
   Search(store, history),
-  Admin(store, history),
   Users(store, history),
   UserDetails(store, history),
   AccessLog(store, history),
   Libraries(store, history),
   LibraryManager(store, history),
-  CreateImportSession(store, history),
   Playlists(store, history),
+
+  Admin(store, history),
+  Manager(store, history),
+  CreateImportSession(store, history),
+  ImportSession(store, history),
 ].map(component => createLoadableComponent(component, store, history))
 
 function createLoadableComponent (lazyComponent, store, history) {
