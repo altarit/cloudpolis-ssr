@@ -10,14 +10,17 @@ import { injectReducer } from '../modules'
 import Home from './Home'
 import Artists from './Artists'
 import Artist from './Artist'
+import Manager from './Manager/Index'
 import Search from './Search'
 import Admin from './Admin'
 import Users from './Users'
 import UserDetails from './UserDetails'
 import AccessLog from './AccessLog'
 import Libraries from './Libraries'
-import Library from './Library'
 import Playlists from './Playlists'
+import LibraryManager from './Manager/LibraryManager'
+import CreateImportSession from './Manager/CreateImportSession'
+import ImportSession from './Manager/Import'
 
 // const Homepage = Loadable({
 //   loader: () => import(/* webpackChunkName: "homepage" */ './Home/containers/HomeContainer'),
@@ -60,16 +63,20 @@ export const createRoutes = (store, history) => [
   Artists,
   Artist,
   Search(store, history),
-  Admin(store, history),
   Users(store, history),
   UserDetails(store, history),
   AccessLog(store, history),
   Libraries(store, history),
-  Library(store, history),
+  LibraryManager(store, history),
   Playlists(store, history),
+
+  Admin(store, history),
+  Manager(store, history),
+  CreateImportSession(store, history),
+  ImportSession(store, history),
 ].map(component => createLoadableComponent(component, store, history))
 
-function createLoadableComponent(lazyComponent, store, history) {
+function createLoadableComponent (lazyComponent, store, history) {
   if (lazyComponent.component) {
     return <Route key={lazyComponent.path} exact path={lazyComponent.path} component={lazyComponent.component} />
   }
@@ -84,10 +91,10 @@ function createLoadableComponent(lazyComponent, store, history) {
           return modules[0]
         })
     },
-    loading() {
+    loading () {
       return <div>Loading...</div>
     },
-    modules: [lazyComponent.name]
+    modules: lazyComponent.modules || [lazyComponent.name]
   })
 
   return (

@@ -1,10 +1,11 @@
 export default (store, history) => ({
   path: '/music/search',
   name: 'search',
+  modules: ['search'],
   getComponent() {
     return Promise.all([
-      import('./containers/SearchContainer'),
-      import('./modules/search'),
+      import(/* webpackChunkName: "search" */ './containers/SearchContainer'),
+      import(/* webpackChunkName: "search" */ './modules/search'),
     ])
   }
 })

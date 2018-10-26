@@ -10,19 +10,18 @@ import playerReducer from '../modules/player/playerReducer'
 import popupReducer from '../modules/popups'
 import homeReducer from '../routes/Home/modules/home'
 import authReducer from '../components/Auth/modules/authReducer'
+import fileManagerReducer from '../components/FileManager/modules/fileManager'
 
 export const makeRootReducer = (history, asyncReducers) => {
   return connectRouter(history)(combineReducers({
     auth: authReducer,
     profile,
-
-    // form: formReducer,
     sidebar: sidebarReducer,
     audioDetails: audioDetailsReducer,
     player: playerReducer,
     popups: popupReducer,
     home: homeReducer,
-    // auth: authReducer,
+    fileManager: fileManagerReducer,
     ...asyncReducers,
   }))
 }

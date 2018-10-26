@@ -1,4 +1,4 @@
-const BASE_URL = process.env.NODE_ENV === 'development' ? 'http://localhost' : 'http://localhost'
+const BASE_URL = process.env.NODE_ENV === 'development' ? 'http://localhost:3002' : 'http://localhost'
 
 // const BASE_URL = ''
 
@@ -16,8 +16,9 @@ export function apiLink(link) {
 }
 
 export function trackLink(src) {
-  if (!src) return null
-  return BASE_URL + '/library' + src
+  return src;
+  //if (!src) return null
+  //return BASE_URL + '/library' + src
 }
 
 export function lightEncode(text) {
