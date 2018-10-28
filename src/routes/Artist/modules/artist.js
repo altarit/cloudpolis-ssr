@@ -11,10 +11,10 @@ export function getArtist(artistsLibrary, artistName) {
     })
 
     return fetchGet(`/music/artists/${artistsLibrary}/${artistName}`)
-      .then(response => {
+      .then(({data}) => {
         dispatch({
           type: GET_ARTIST_SUCCESS,
-          tracks: response.data.artist.songs
+          tracks: data.artist.tracks
         })
       })
   }
@@ -32,23 +32,23 @@ const ACTION_HANDLERS = {
   },
   GET_ARTIST_SUCCESS: (state, action) => {
     let tracks = action.tracks
-    let albumsHash = action.tracks.reduce((res, track) => {
-      let albumName = track.album || track.compilation
-      if (!res[albumName]) {
-        res[albumName] = []
-      }
-      let album = res[albumName]
-      album.push(track)
-      return res
-    }, [])
-    let albums = []
-    for (let albumName of Object.keys(albumsHash)) {
-      albums.push({
-        name: albumName,
-        tracks: albumsHash[albumName]
-      })
-    }
-    return { ...state, albums: albums, tracks: tracks, fetching: false }
+    // let albumsHash = action.tracks.reduce((res, track) => {
+    //   let albumName = track.album || track.compilation
+    //   if (!res[albumName]) {
+    //     res[albumName] = []
+    //   }
+    //   let album = res[albumName]
+    //   album.push(track)
+    //   return res
+    // }, [])
+    // let albums = []
+    // for (let albumName of Object.keys(albumsHash)) {
+    //   albums.push({
+    //     name: albumName,
+    //     tracks: albumsHash[albumName]
+    //   })
+    // }
+    return { ...state, albums: [], tracks: tracks, fetching: false }
   },
   GET_ARTIST_FAILED: (state, action) => {
     return { ...state, fetching: false, errorText: action.errorText }

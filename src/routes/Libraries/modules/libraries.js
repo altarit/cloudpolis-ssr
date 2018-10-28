@@ -83,7 +83,7 @@ export default function librariesReducer(state = initialState, action) {
       return {
         ...state,
         fetching: false,
-        libraries: action.payload
+        libraries: action.payload.libraries
       }
     case GET_LIBRARIES_FAILURE:
       return {
