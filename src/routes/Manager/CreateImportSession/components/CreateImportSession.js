@@ -23,8 +23,8 @@ export class CreateImportSession extends React.Component {
     prepareImportSession: func.isRequired,
   }
 
-  handleChangeImportPath = (mainPath, secondPath) => {
-    this.props.setImportPath(mainPath)
+  handleChangeImportPath = (importPath) => {
+    this.props.setImportPath(importPath)
   }
 
   handleChangeNetworkPath = (e) => {

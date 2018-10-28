@@ -1,11 +1,12 @@
 import { connect } from 'react-redux'
 
-import { checkProgress, saveTracks } from '../modules/stepMakeProgress'
+import { checkProgress, saveTracks, startProcessingMetadata } from '../modules/stepMakeProgress'
 import StepMakeProgress from '../components/StepMakeProgress'
 
 const mapDispatchToProps = {
   checkProgress,
   saveTracks,
+  startProcessingMetadata,
 }
 
 const mapStateToProps = (state, props) => ({

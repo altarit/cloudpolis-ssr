@@ -64,16 +64,16 @@ export function prepareImportSession (libraryName, importPath, networkPath) {
     dispatch({
       type: IMPORT_PREPARE_IMPORT_REQUEST,
       payload: {
-        libraryName: libraryName,
-        mainPath: importPath,
-        networkPath: networkPath,
+        libraryName,
+        importPath,
+        networkPath,
       }
     })
 
     const params = {
       body: JSON.stringify({
-        mainPath: importPath,
-        networkPath: networkPath,
+        importPath,
+        networkPath,
       })
     }
     return fetchPost(`/manager/libraries/${libraryName}/import/sessions`, params)

@@ -8,6 +8,7 @@ import StepMakeProgress from "../containers/StepMakeProgressContainer"
 
 const STATUS_COMPONENTS = {
   'INITIALIZED': StepBuildLibraryTree,
+  'READY_TO_PROCESS_METADATA': StepMakeProgress,
   'PROCESSING_METADATA': StepMakeProgress,
 }
 

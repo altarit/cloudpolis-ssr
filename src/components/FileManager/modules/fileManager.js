@@ -4,7 +4,7 @@ export const FILE_MANAGER_GET_DIRS_REUQEST = 'FILE_MANAGER_GET_DIRS_REUQEST'
 export const FILE_MANAGER_GET_DIRS_SUCCESS = 'FILE_MANAGER_GET_DIRS_SUCCESS'
 export const FILE_MANAGER_GET_DIRS_FAILURE = 'FILE_MANAGER_GET_DIRS_FAILURE'
 
-export const getDirContent = owner => (mainPath, secondPath) => dispatch => {
+export const getDirContent = owner => (mainPath, additionalPath) => dispatch => {
   dispatch({
     type: FILE_MANAGER_GET_DIRS_REUQEST,
     payload: {
@@ -13,7 +13,7 @@ export const getDirContent = owner => (mainPath, secondPath) => dispatch => {
   })
 
   const params = {
-    body: JSON.stringify({ mainPath: mainPath, secondPath: secondPath })
+    body: JSON.stringify({ mainPath: mainPath, additionalPath: additionalPath })
   }
 
   return fetchPost(`/path/dir/`, params)

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { getLibraries, createLibrary, deleteLibrary } from '../modules/librariesManager'
+import { getLibraries, createLibrary, deleteLibrary } from '../modules/manager'
 import Manager from '../components/Manager'
 
 const mapDispatchToProps = {
@@ -12,7 +12,7 @@ const mapDispatchToProps = {
 const mapStateToProps = (state) => ({
   name: state.auth.name,
 
-  libraries: state.librariesManager.libraries,
+  libraries: state.manager.libraries,
   addLibraryPopup: state.popups.addLibraryPopup,
   moreLibrariesPopup: state.popups.moreLibrariesPopup
 })

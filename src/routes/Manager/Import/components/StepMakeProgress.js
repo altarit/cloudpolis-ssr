@@ -12,6 +12,7 @@ export class StepMakeProgress extends Component {
 
     checkProgress: func.isRequired,
     saveTracks: func.isRequired,
+    startProcessingMetadata: func.isRequired,
   }
 
   renderNormalizedTracks = (tracks) => {
@@ -44,12 +45,17 @@ export class StepMakeProgress extends Component {
     this.props.saveTracks(this.props.importSessionId)
   }
 
+  startProcessingMetadata = () => {
+    this.props.startProcessingMetadata(this.props.importSessionId)
+  }
+
   render () {
     const { libraryName, importPath, importSessionId, tracks, tracksCompleted } = this.props
 
     return (
       <div>
         <h3>Step 3: Processing import {importPath} {importSessionId}</h3>
+        <button onClick={this.startProcessingMetadata}>Start Processing</button>
         <button onClick={this.checkProgress}>Update progress</button>
         <button onClick={this.saveTracks}>Next</button>
         {tracksCompleted}/ {tracks && tracks.length}
