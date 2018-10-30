@@ -14,6 +14,7 @@ const mapStateToProps = (state, props) => ({
   compilations: state.libraryManager.compilations,
   importSessions: state.libraryManager.importSessions,
   importTracks: state.popups.importTracks,
+  moreImportsPopup: state.popups.moreImportsPopup,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LibraryManager)
