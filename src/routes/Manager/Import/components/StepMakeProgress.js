@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { func, arrayOf, string, object, bool, number } from 'prop-types'
 
+import './StepMakeProgress'
 import { TYPE_ICONS } from './constants'
 
 export class StepMakeProgress extends Component {
@@ -54,7 +55,7 @@ export class StepMakeProgress extends Component {
 
     return (
       <div>
-        <h3>Step 3: Processing import {importPath} {importSessionId}</h3>
+        <h4>Step 3: Processing metadata</h4>
         <button onClick={this.startProcessingMetadata}>Start Processing</button>
         <button onClick={this.checkProgress}>Update progress</button>
         <button onClick={this.saveTracks}>Next</button>

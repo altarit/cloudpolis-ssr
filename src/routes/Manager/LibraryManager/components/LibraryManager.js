@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { func, arrayOf, string, object, bool, number } from 'prop-types'
 import { Link } from 'react-router-dom'
 
 import Page from '../../../../components/page/index'
@@ -7,16 +7,16 @@ import './LibraryManager.css'
 
 export class LibraryManager extends React.Component {
   static propTypes = {
-    importTracks: PropTypes.object,
-    libraryName: PropTypes.string,
-    // fetching: PropTypes.bool,
-    compilations: PropTypes.arrayOf(PropTypes.object).isRequired,
-    importSessions: PropTypes.arrayOf(PropTypes.object).isRequired,
+    importTracks: object,
+    libraryName: string,
+    // fetching: bool,
+    compilations: arrayOf(object).isRequired,
+    importSessions: arrayOf(object).isRequired,
 
-    moreImportsPopup: PropTypes.object,
+    moreImportsPopup: object,
 
-    getCompilations: PropTypes.func.isRequired,
-    getImportSessions: PropTypes.func.isRequired,
+    getCompilations: func.isRequired,
+    getImportSessions: func.isRequired,
   }
 
   componentDidMount () {
