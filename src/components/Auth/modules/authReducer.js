@@ -31,8 +31,11 @@ const ACTION_HANDLERS = {
   [types.AUTH_SIGNUP_REQUEST]: (state, action) => {
     return { ...state, fetching: true }
   },
-  [types.AUTH_SIGNUP_SUCCESS]: (state, action) => {
-    return { ...state, fetching: false, name: action.name }
+  [types.AUTH_SIGNUP_SUCCESS]: (state, { payload }) => {
+    const { username, access, refresh } = payload
+    localStorage.setItem('auth', access)
+    localStorage.setItem('refresh', refresh)
+    return { ...state, fetching: false, name: username }
   },
   [types.AUTH_SIGNUP_FAILURE]: (state, action) => {
     return { ...state, fetching: false, errorText: action.errorText }
@@ -51,7 +54,7 @@ const ACTION_HANDLERS = {
   }
 }
 
-export default function authReducer(state = initialState, action) {
+export default function authReducer (state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type]
   return handler ? handler(state, action) : state
 }
