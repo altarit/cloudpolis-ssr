@@ -93,10 +93,10 @@ export function prepareImportSession (libraryName, importPath, networkPath) {
 
 const initialState = {
   fetching: false,
-  // importPath: 'F:\\docs\\music\\mlp\\My Little Pony Ost\\mlpost',
-  importPath: 'D:\\Documents\\Music\\MAv16\\Artists',
-  // networkPath: 'http://localhost',
-  networkPath: 'http://localhost/files/music/mlpfa/',
+  importPath: 'F:\\docs\\music\\mlp\\My Little Pony Ost\\mlpost',
+  networkPath: 'http://localhost:2012/files/music/mlpost/',
+  // importPath: 'D:\\Documents\\Music\\MAv16\\Artists',
+  // networkPath: 'http://localhost:2012/files/music/mlpfa/',
   isAvailable: false,
 }
 

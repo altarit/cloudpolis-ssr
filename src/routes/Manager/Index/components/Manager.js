@@ -18,6 +18,7 @@ export class Manager extends React.Component {
     getLibraries: func.isRequired,
     createLibrary: func.isRequired,
     deleteLibrary: func.isRequired,
+    deleteAllMusic: func.isRequired,
   }
 
   componentDidMount () {
@@ -29,7 +30,15 @@ export class Manager extends React.Component {
   }
 
   deleteLibrary = () => {
-    this.props.deleteLibrary(this.props.moreLibrariesPopup.from)
+    const {moreLibrariesPopup} = this.props
+
+    if (moreLibrariesPopup) {
+      this.props.deleteLibrary(moreLibrariesPopup.from)
+    }
+  }
+
+  deleteAllMusic = () => {
+    this.props.deleteAllMusic()
   }
 
   static renderLibraryRow (library) {
@@ -65,14 +74,11 @@ export class Manager extends React.Component {
           <button className='btn btn-outline-secondary' onClick={this.createLibrary} data-click='custom'>
             Create Library
           </button>
-          <button className='btn btn-outline-secondary' onClick={this.props.deleteCollections}>
-            Delete Artists
+          <button className='btn btn-outline-secondary' onClick={this.deleteAllMusic} data-click='custom'>
+            Delete All Music
           </button>
-          <button className='btn btn-outline-secondary' onClick={this.props.deleteSongs}>
-            Delete Songs
-          </button>
-          <button className='btn btn-outline-secondary' onClick={this.props.extractSongs}>
-            Extract Songs
+          <button className='btn btn-outline-secondary' onClick={this.props.reImportAllSessions} data-click='custom'>
+            ReImport From All Completed Sessions
           </button>
         </div>
 

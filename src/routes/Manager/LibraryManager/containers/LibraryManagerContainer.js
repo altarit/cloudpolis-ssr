@@ -1,11 +1,13 @@
 import { connect } from 'react-redux'
 
-import { getCompilations, getImportSessions } from '../modules/libraryManager'
+import { getCompilations, getImportSessions, deleteImport, prepareImport } from '../modules/libraryManager'
 import LibraryManager from '../components/LibraryManager'
 
 const mapDispatchToProps = {
   getCompilations,
   getImportSessions,
+  deleteImport,
+  prepareImport,
 }
 
 const mapStateToProps = (state, props) => ({

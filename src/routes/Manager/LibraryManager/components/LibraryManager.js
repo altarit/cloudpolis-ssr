@@ -15,13 +15,16 @@ export class LibraryManager extends React.Component {
 
     moreImportsPopup: object,
 
-    getCompilations: func.isRequired,
     getImportSessions: func.isRequired,
+    getDirContent: func.isRequired,
+    deleteImport: func.isRequired,
+    prepareImport: func.isRequired,
   }
 
   componentDidMount () {
-    this.props.getCompilations(this.props.libraryName)
-    this.props.getImportSessions(this.props.libraryName)
+    const { libraryName } = this.props
+
+    this.props.getImportSessions(libraryName)
   }
 
   handleChangePath = (mainPath, secondPath) => {
@@ -30,6 +33,25 @@ export class LibraryManager extends React.Component {
 
   handleSubmitPath = (mainPath, secondPath) => {
     this.props.getDirContent(mainPath, secondPath)
+  }
+
+  prepareImport = () => {
+    const { libraryName } = this.props
+
+    this.props.prepareImport(libraryName)
+  }
+
+  deleteImport = () => {
+    const { moreImportsPopup, importSessions } = this.props
+
+    if (moreImportsPopup) {
+      const id = moreImportsPopup.from
+      const session = importSessions.find(s => s.id === id)
+
+      if (session) {
+        this.props.deleteImport(id, session.status)
+      }
+    }
   }
 
   static renderImportSessionRow (importSession) {
@@ -61,7 +83,9 @@ export class LibraryManager extends React.Component {
       <Page className='LibraryManager container'>
         <h2>Library: {libraryName}</h2>
         <div className='LibraryManager__controls btn-group card-body'>
-          <Link to={`/manager/libraries/${libraryName}/import`}>Import tracks</Link>
+          <button className='btn btn-outline-secondary' onClick={this.prepareImport}>
+            Import Tracks
+          </button>
           <button className='btn btn-outline-secondary' onClick={this.props.deleteSongs}>
             Delete Songs
           </button>

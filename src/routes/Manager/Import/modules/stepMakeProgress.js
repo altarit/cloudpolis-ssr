@@ -1,5 +1,4 @@
 import { fetchGet, fetchPost } from '../../../../modules/apiUtils'
-import { IMPORT_CONFIRM_TREE_REQUEST, IMPORT_CONFIRM_TREE_SUCCESS } from "./stepBuildLibraryTree"
 
 export const IMPORT_GET_PROGRESS_REQUEST = 'IMPORT_GET_PROGRESS_REQUEST'
 export const IMPORT_GET_PROGRESS_SUCCESS = 'IMPORT_GET_PROGRESS_SUCCESS'

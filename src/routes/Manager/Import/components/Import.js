@@ -5,11 +5,15 @@ import Page from '../../../../components/page/index'
 import './Import.css'
 import StepBuildLibraryTree from '../containers/StepBuildLibraryTreeContainer'
 import StepMakeProgress from '../containers/StepMakeProgressContainer'
+import { IMPORT_STATUSES } from '../modules/import'
 
 const STATUS_COMPONENTS = {
-  'INITIALIZED': StepBuildLibraryTree,
-  'READY_TO_PROCESS_METADATA': StepMakeProgress,
-  'PROCESSING_METADATA': StepMakeProgress,
+  [IMPORT_STATUSES.INITIALIZED]: StepBuildLibraryTree,
+  [IMPORT_STATUSES.CONFIRMED]: StepMakeProgress,
+  [IMPORT_STATUSES.PROCESSING_METADATA]: StepMakeProgress,
+  [IMPORT_STATUSES.CANCELLING_PROCESSING_METADATA]: StepMakeProgress,
+  [IMPORT_STATUSES.PROCESSED_METADATA]: StepMakeProgress,
+  [IMPORT_STATUSES.COMPLETED]: StepMakeProgress,
 }
 
 export class Import extends React.Component {

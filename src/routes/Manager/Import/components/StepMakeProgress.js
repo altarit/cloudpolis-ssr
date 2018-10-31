@@ -56,9 +56,18 @@ export class StepMakeProgress extends Component {
     return (
       <div>
         <h4>Step 3: Processing metadata</h4>
-        <button onClick={this.startProcessingMetadata}>Start Processing</button>
-        <button onClick={this.checkProgress}>Update progress</button>
-        <button onClick={this.saveTracks}>Next</button>
+
+        <div className='StepBuildLibraryTree__controls btn-group card-body'>
+          <button className='btn btn-outline-secondary' onClick={this.startProcessingMetadata}>
+            Start Processing
+          </button>
+          <button className='btn btn-outline-secondary' onClick={this.checkProgress}>
+            Update progress
+          </button>
+          <button className='btn btn-outline-secondary' onClick={this.saveTracks}>
+            Next
+          </button>
+        </div>
         {tracksCompleted}/ {tracks && tracks.length}
         {this.renderNormalizedTracks(tracks)}
       </div>

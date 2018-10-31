@@ -1,12 +1,20 @@
 import { connect } from 'react-redux'
 
-import { getLibraries, createLibrary, deleteLibrary } from '../modules/manager'
+import {
+  getLibraries,
+  createLibrary,
+  deleteLibrary,
+  deleteAllMusic,
+  reImportAllSessions,
+} from '../modules/manager'
 import Manager from '../components/Manager'
 
 const mapDispatchToProps = {
   getLibraries,
   createLibrary,
   deleteLibrary,
+  deleteAllMusic,
+  reImportAllSessions,
 }
 
 const mapStateToProps = (state) => ({
