@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { func, arrayOf, string, object, bool, number } from 'prop-types'
 
+import './StepMakeProgress'
 import { TYPE_ICONS } from './constants'
 
 export class StepMakeProgress extends Component {
@@ -12,6 +13,7 @@ export class StepMakeProgress extends Component {
 
     checkProgress: func.isRequired,
     saveTracks: func.isRequired,
+    startProcessingMetadata: func.isRequired,
   }
 
   renderNormalizedTracks = (tracks) => {
@@ -44,14 +46,28 @@ export class StepMakeProgress extends Component {
     this.props.saveTracks(this.props.importSessionId)
   }
 
+  startProcessingMetadata = () => {
+    this.props.startProcessingMetadata(this.props.importSessionId)
+  }
+
   render () {
     const { libraryName, importPath, importSessionId, tracks, tracksCompleted } = this.props
 
     return (
       <div>
-        <h3>Step 3: Processing import {importPath} {importSessionId}</h3>
-        <button onClick={this.checkProgress}>Update progress</button>
-        <button onClick={this.saveTracks}>Next</button>
+        <h4>Step 3: Processing metadata</h4>
+
+        <div className='StepBuildLibraryTree__controls btn-group card-body'>
+          <button className='btn btn-outline-secondary' onClick={this.startProcessingMetadata}>
+            Start Processing
+          </button>
+          <button className='btn btn-outline-secondary' onClick={this.checkProgress}>
+            Update progress
+          </button>
+          <button className='btn btn-outline-secondary' onClick={this.saveTracks}>
+            Next
+          </button>
+        </div>
         {tracksCompleted}/ {tracks && tracks.length}
         {this.renderNormalizedTracks(tracks)}
       </div>

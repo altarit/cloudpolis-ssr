@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { func, arrayOf, string, object, bool, number } from 'prop-types'
 
+import './StepBuildLibraryTree.css'
 import { TYPE_ICONS } from './constants'
 
 export class StepBuildLibraryTree extends Component {
@@ -26,8 +27,11 @@ export class StepBuildLibraryTree extends Component {
     this.props.confirmTree(importSessionId)
   }
 
-  renderFirstLevel = (fileTree) => {
+  handleCancelSession = () => {
+    const { importSessionId } = this.props
+  }
 
+  renderFirstLevel = (fileTree) => {
     if (!fileTree) {
       return <div>There's no tree</div>
     }
@@ -42,13 +46,13 @@ export class StepBuildLibraryTree extends Component {
     const rootTracks = tracks && tracks.map(this.renderTrack)
     const iconClass = TYPE_ICONS[type]
 
-    return <div className='Import__dir'>
-      <div className='Import__dir-header'>
+    return <div className='StepBuildLibraryTree__dir'>
+      <div className='StepBuildLibraryTree__dir-header'>
         <span className={iconClass}> </span>
         Root
       </div>
-      <div className='Import__dir-children'>{secondLevelNodes}</div>
-      <div className='Import__dir-children'>{rootTracks}</div>
+      <div className='StepBuildLibraryTree__dir-children'>{secondLevelNodes}</div>
+      <div className='StepBuildLibraryTree__dir-children'>{rootTracks}</div>
     </div>
   }
 
@@ -58,18 +62,18 @@ export class StepBuildLibraryTree extends Component {
     const thisLevelTracks = tracks && tracks.map(this.renderTrack)
     const iconClass = TYPE_ICONS[type]
 
-    return <div key={name} className='Import__dir'>
-      <div className='Import__dir-header'>
+    return <div key={name} className='StepBuildLibraryTree__dir'>
+      <div className='StepBuildLibraryTree__dir-header'>
         <span className={iconClass}> </span>
         {name}
       </div>
       {nextLevelNodes && nextLevelNodes.length ? (
-        <div className='Import__dir-children'>
+        <div className='StepBuildLibraryTree__dir-children'>
           {nextLevelNodes}
         </div>
       ) : null}
       {thisLevelTracks && thisLevelTracks.length ? (
-        <div className='Import__dir-tracks'>
+        <div className='StepBuildLibraryTree__dir-tracks'>
           {thisLevelTracks}
         </div>
       ) : null}
@@ -81,20 +85,29 @@ export class StepBuildLibraryTree extends Component {
     const { name, type, path } = track
     const iconClass = TYPE_ICONS[type]
 
-    return <div key={name} className='Import__track'>
+    return <div key={name} className='StepBuildLibraryTree__track'>
       <span className={iconClass}> </span>
       {name}
     </div>
   }
 
   render () {
-    const { fileTree, importPath } = this.props
+    const { fileTree } = this.props
 
     return (
       <div>
-        <h3>Step 2: Processing directory {importPath}</h3>
-        <button onClick={this.handleBuildTree}>Build Tree</button>
-        <button onClick={this.handleConfirmTree}>Next</button>
+        <h4>Step 2: Search for files</h4>
+        <div className='StepBuildLibraryTree__controls btn-group card-body'>
+          <button className='btn btn-outline-secondary' onClick={this.handleBuildTree}>
+            Build Tree
+          </button>
+          <button className='btn btn-outline-secondary' onClick={this.handleConfirmTree}>
+            Next
+          </button>
+          <button className='btn btn-outline-secondary' onClick={this.handleCancelSession}>
+            Cancel Session
+          </button>
+        </div>
         {fileTree ? this.renderFirstLevel(fileTree) : null}
       </div>
     )

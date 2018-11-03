@@ -1,9 +1,22 @@
+import { push } from 'connected-react-router'
+
 import { fetchDelete, fetchGet, fetchPost } from '../../../../modules/apiUtils'
-import {
-  DELETE_SONGS_REQUEST,
-  DELETE_SONGS_SUCCESS,
-  EXTRACT_SONGS_REQUEST, EXTRACT_SONGS_SUCCESS
-} from "../../../Libraries/modules/librariesManager"
+
+export const DELETE_COLLECTIONS_REQUEST = 'DELETE_COLLECTIONS_REQUEST'
+export const DELETE_COLLECTIONS_SUCCESS = 'DELETE_COLLECTIONS_SUCCESS'
+export const DELETE_COLLECTIONS_FAILURE = 'DELETE_COLLECTIONS_FAILURE'
+
+export const DELETE_SONGS_REQUEST = 'DELETE_SONGS_REQUEST'
+export const DELETE_SONGS_SUCCESS = 'DELETE_SONGS_SUCCESS'
+export const DELETE_SONGS_FAILURE = 'DELETE_SONGS_FAILURE'
+
+export const LIBRARY_MANAGER_DELETE_IMPORT_REQUEST = 'LIBRARY_MANAGER_DELETE_IMPORT_REQUEST'
+export const LIBRARY_MANAGER_DELETE_IMPORT_SUCCESS = 'LIBRARY_MANAGER_DELETE_IMPORT_SUCCESS'
+export const LIBRARY_MANAGER_DELETE_IMPORT_FAILURE = 'LIBRARY_MANAGER_DELETE_IMPORT_FAILURE'
+
+export const EXTRACT_SONGS_REQUEST = 'EXTRACT_SONGS_REQUEST'
+export const EXTRACT_SONGS_SUCCESS = 'EXTRACT_SONGS_SUCCESS'
+export const EXTRACT_SONGS_FAILURE = 'EXTRACT_SONGS_FAILURE'
 
 export const GET_COMPILATIONS_REQUEST = 'GET_COMPILATIONS_REQUEST'
 export const GET_COMPILATIONS_SUCCESS = 'GET_COMPILATIONS_SUCCESS'
@@ -13,13 +26,11 @@ export const IMPORT_GET_SESSIONS_REQUEST = 'IMPORT_GET_SESSIONS_REQUEST'
 export const IMPORT_GET_SESSIONS_SUCCESS = 'IMPORT_GET_SESSIONS_SUCCESS'
 export const IMPORT_GET_SESSIONS_FAILURE = 'IMPORT_GET_SESSIONS_FAILURE'
 
-export const LIBRARY_MANAGER_DELETE_TRACKS_REQUEST = 'LIBRARY_MANAGER_DELETE_TRACKS_REQUEST'
-export const LIBRARY_MANAGER_DELETE_TRACKS_SUCCESS = 'LIBRARY_MANAGER_DELETE_TRACKS_SUCCESS'
-export const LIBRARY_MANAGER_DELETE_TRACKS_FAILURE = 'LIBRARY_MANAGER_DELETE_TRACKS_FAILURE'
-
-export const LIBRARY_MANAGER_EXTRACT_TRACKS_REQUEST = 'LIBRARY_MANAGER_EXTRACT_TRACKS_REQUEST'
-export const LIBRARY_MANAGER_EXTRACT_TRACKS_SUCCESS = 'LIBRARY_MANAGER_EXTRACT_TRACKS_SUCCESS'
-export const LIBRARY_MANAGER_EXTRACT_TRACKS_FAILURE = 'LIBRARY_MANAGER_EXTRACT_TRACKS_FAILURE'
+export function prepareImport(libraryName) {
+  return (dispatch) => {
+    dispatch(push(`/manager/libraries/${libraryName}/import`))
+  }
+}
 
 export function getCompilations (libraryName) {
   return (dispatch) => {
@@ -71,6 +82,23 @@ export function deleteLibraryTracks() {
   }
 }
 
+export function deleteImport(sessionId, sessionStatus) {
+  return (dispatch) => {
+    dispatch({
+      type: LIBRARY_MANAGER_DELETE_IMPORT_REQUEST,
+      sessionId: sessionId,
+    })
+
+    fetchDelete(`/manager/imports/${sessionId}/${sessionStatus}`)
+      .then(response => {
+        dispatch({
+          type: LIBRARY_MANAGER_DELETE_IMPORT_SUCCESS,
+          sessionId: sessionId,
+        })
+      })
+  }
+}
+
 export function extractLibraryTracks() {
   return (dispatch) => {
     dispatch({
@@ -113,6 +141,24 @@ const ACTION_HANDLERS = {
       ...state,
       fetching: false,
       importSessions: [],
+    }
+  },
+  [LIBRARY_MANAGER_DELETE_IMPORT_REQUEST]: (state) => {
+    return {
+      ...state,
+      fetching: true,
+    }
+  },
+  [LIBRARY_MANAGER_DELETE_IMPORT_SUCCESS]: (state) => {
+    return {
+      ...state,
+      fetching: false,
+    }
+  },
+  [LIBRARY_MANAGER_DELETE_IMPORT_FAILURE]: (state, { err }) => {
+    return {
+      ...state,
+      fetching: false,
     }
   },
 }

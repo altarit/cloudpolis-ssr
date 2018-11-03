@@ -9,11 +9,9 @@ export default (store, history) => ({
     return Promise.all([
       import(/* webpackChunkName: "manager" */ './containers/ManagerContainer'),
       import(/* webpackChunkName: "manager" */ './modules/manager'),
-      import(/* webpackChunkName: "manager" */ './modules/librariesManager'),
     ])
       .then(modules => {
         injectReducer(store, history, { key: 'manager', reducer: modules[1].default })
-        injectReducer(store, history, { key: 'librariesManager', reducer: modules[2].default })
         return [modules[0]]
       })
   }

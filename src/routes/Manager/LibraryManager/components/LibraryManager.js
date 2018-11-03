@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { func, arrayOf, string, object, bool, number } from 'prop-types'
 import { Link } from 'react-router-dom'
 
 import Page from '../../../../components/page/index'
@@ -7,20 +7,24 @@ import './LibraryManager.css'
 
 export class LibraryManager extends React.Component {
   static propTypes = {
-    importTracks: PropTypes.object,
+    importTracks: object,
+    libraryName: string,
+    // fetching: bool,
+    compilations: arrayOf(object).isRequired,
+    importSessions: arrayOf(object).isRequired,
 
-    libraryName: PropTypes.string,
-    // fetching: PropTypes.bool,
-    compilations: PropTypes.arrayOf(PropTypes.object).isRequired,
-    importSessions: PropTypes.arrayOf(PropTypes.object).isRequired,
+    moreImportsPopup: object,
 
-    getCompilations: PropTypes.func.isRequired,
-    getImportSessions: PropTypes.func.isRequired,
+    getImportSessions: func.isRequired,
+    getDirContent: func.isRequired,
+    deleteImport: func.isRequired,
+    prepareImport: func.isRequired,
   }
 
   componentDidMount () {
-    this.props.getCompilations(this.props.libraryName)
-    this.props.getImportSessions(this.props.libraryName)
+    const { libraryName } = this.props
+
+    this.props.getImportSessions(libraryName)
   }
 
   handleChangePath = (mainPath, secondPath) => {
@@ -31,12 +35,57 @@ export class LibraryManager extends React.Component {
     this.props.getDirContent(mainPath, secondPath)
   }
 
-  render () {
+  prepareImport = () => {
+    const { libraryName } = this.props
+
+    this.props.prepareImport(libraryName)
+  }
+
+  deleteImport = () => {
+    const { moreImportsPopup, importSessions } = this.props
+
+    if (moreImportsPopup) {
+      const id = moreImportsPopup.from
+      const session = importSessions.find(s => s.id === id)
+
+      if (session) {
+        this.props.deleteImport(id, session.status)
+      }
+    }
+  }
+
+  static renderImportSessionRow (importSession) {
+    const { id, status, importPath, networkPath, created } = importSession
+
     return (
-      <Page className='libraries container'>
-        <h2>Library: {this.props.libraryName}</h2>
-        <div className='btn-group card-body'>
-          <Link to={`/manager/libraries/${this.props.libraryName}/import`}>Import tracks</Link>
+      <tr key={id}>
+        <th scope='row'>
+          <Link to={`/manager/imports/${id}`} className='list-group-item-action'>
+            {created} <br />{id}
+          </Link>
+        </th>
+        <td>{networkPath} <br />{importPath}</td>
+        <td>{status}</td>
+        <td>
+          <button type='button' className='btn btn-def fa'
+                  data-for='moreImportsPopup' data-click='dropdown' data-from={id}>
+            ...
+          </button>
+        </td>
+      </tr>
+    )
+  }
+
+  render () {
+    const { libraryName, importSessions, moreImportsPopup } = this.props
+
+    return (
+      <Page className='LibraryManager container'>
+        <h2>Library: {libraryName}</h2>
+        <div className='LibraryManager__controls btn-group card-body'>
+          <button className='btn btn-outline-secondary' onClick={this.prepareImport}>
+            Import Tracks
+          </button>
           <button className='btn btn-outline-secondary' onClick={this.props.deleteSongs}>
             Delete Songs
           </button>
@@ -45,40 +94,33 @@ export class LibraryManager extends React.Component {
           </button>
         </div>
 
-        Sessions:
-        <ul className='libraries-list list-group'>
-          {this.props.importSessions.map(el =>
-            <li key={el.name}
-                className='list-group-item list-group-item-action
-                           flex-row align-items-center d-flex h-100 justify-content-between'>
-              <Link to={`/manager/imports/${el.name}`} className='list-group-item-action'>
-                {el.name} {el.status} <br/>
-                Import from: {el.importPath} <br />
-                Located: {el.networkPath}
-              </Link>
-              <button type='button' className='btn btn-def fa'
-                      data-for='moreCompilationsPopup' data-click='dropdown' data-from={el.name}>
-                ...
-              </button>
-            </li>
-          )}
-        </ul>
+        <table className='LibraryManager__imports table '>
+          <thead>
+          <tr>
+            <th scope='col'>Created / Id</th>
+            <th scope='col'>Import Path / Network Path</th>
+            <th scope='col'>Status</th>
+            <th scope='col'>More</th>
+          </tr>
+          </thead>
+          <tbody>
+          {importSessions.map(LibraryManager.renderImportSessionRow)}
+          </tbody>
+        </table>
 
-        <ul className='libraries-list list-group'>
-          {this.props.compilations.map(el =>
-            <li key={el.name}
-                className='list-group-item list-group-item-action
-                           flex-row align-items-center d-flex h-100 justify-content-between'>
-              <Link to={`/music/libraries/${this.props.libraryName}/${el.name}`} className='list-group-item-action'>
-                {el.name}
-              </Link>
-              <button type='button' className='btn btn-def fa'
-                      data-for='moreCompilationsPopup' data-click='dropdown' data-from={el.name}>
-                ...
-              </button>
-            </li>
-          )}
-        </ul>
+        <div className='dropdown'>
+          {moreImportsPopup ? (
+            <ul className='dropdown-menu show dropdown_fixed'
+                style={{
+                  top: moreImportsPopup.y - 10,
+                  left: moreImportsPopup.x - 160,
+                }}>
+              <li onClick={this.deleteImport} data-click='custom'>
+                <span className='option fa fa-trash-o'> Delete</span>
+              </li>
+            </ul>
+          ) : null}
+        </div>
       </Page>
     )
   }

@@ -25,8 +25,8 @@ export class FileManager extends Component {
     this.props.onChange(this.refs.path.value, '..')
   }
 
-  selectSecondPath = (secondPath) => {
-    this.props.onChange(this.refs.path.value, secondPath)
+  selectAdditionalPath = (additionalPath) => {
+    this.props.onChange(this.refs.path.value, additionalPath)
   }
 
   componentDidMount () {
@@ -74,7 +74,7 @@ export class FileManager extends Component {
         <div onClick={this.openParentDirectory}>Parent</div>
         <div className='filemanager__dirs'>
           {files && files.map(file => (
-            <div key={file.name} onClick={() => this.selectSecondPath(file.name)}>
+            <div key={file.name} onClick={() => this.selectAdditionalPath(file.name)}>
               {file.name}
             </div>
           ))}

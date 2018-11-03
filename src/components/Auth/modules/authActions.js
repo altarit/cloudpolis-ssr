@@ -77,20 +77,24 @@ export function signup(username, password, email) {
     })
 
     let params = {
-      body: JSON.stringify({ username: username, password: password, email: email, isreg: true })
+      body: JSON.stringify({ username: username, password: password, email: email })
     }
-    return fetchPost('/login/', params)
-      .then(json => {
+    return fetchPost('/register/', params)
+      .then(({ data }) => {
         dispatch({
           type: types.AUTH_SIGNUP_SUCCESS,
-          name: json.data
+          payload: {
+            username: data.username,
+            access: data.access,
+            refresh: data.refresh
+          }
         })
         dispatch(closeAllPopups())
       })
-      .catch(ex => {
+      .catch(({error}) => {
         dispatch({
           type: types.AUTH_SIGNUP_FAILURE,
-          errorText: ex.message
+          errorText: error.message
         })
       })
   }

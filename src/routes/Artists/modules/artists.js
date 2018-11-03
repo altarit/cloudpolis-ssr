@@ -6,24 +6,24 @@ export const GET_ARTISTS_FAILED = 'GET_ARTISTS_FAILED'
 
 export const CHANGE_ARTISTS_FILTER = 'CHANGE_ARTISTS_FILTER'
 
-export function getArtists() {
+export function getArtists () {
   return (dispatch) => {
     dispatch({
       type: GET_ARTISTS_REQUEST
     })
 
     return fetchGet('/music/artists/')
-      .then(artists => {
-        console.dir(artists)
+      .then(({ data }) => {
+        const { artists } = data
         dispatch({
           type: GET_ARTISTS_SUCCESS,
-          payload: artists.data
+          payload: artists
         })
       })
   }
 }
 
-export function changeArtistsFilter(mask) {
+export function changeArtistsFilter (mask) {
   return {
     type: CHANGE_ARTISTS_FILTER,
     mask: mask
@@ -35,7 +35,7 @@ export const actions = {
   changeArtistsFilter
 }
 
-function filterArtists(artists, mask) {
+function filterArtists (artists, mask) {
   if (!mask) {
     return artists
   }
@@ -54,7 +54,7 @@ const initialState = {
   artistsMask: ''
 }
 
-export default function artistsReducer(state = initialState, action) {
+export default function artistsReducer (state = initialState, action) {
   switch (action.type) {
     case GET_ARTISTS_REQUEST:
       return {

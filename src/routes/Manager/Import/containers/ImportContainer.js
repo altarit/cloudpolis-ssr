@@ -14,6 +14,7 @@ const mapStateToProps = (state, props) => ({
   networkPath: state.import.session.networkPath,
   libraryName: state.import.session.library,
   status: state.import.session.status,
+  created: state.import.session.created,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Import)

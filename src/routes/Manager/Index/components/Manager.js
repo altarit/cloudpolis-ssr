@@ -1,24 +1,27 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { func, arrayOf, string, object, bool, number } from 'prop-types'
 import { Link } from 'react-router-dom'
 
 import Page from '../../../../components/page/index'
+import './Manager.css'
 
 export class Manager extends React.Component {
   static propTypes = {
-    name: PropTypes.string,
-    libraries: PropTypes.arrayOf(PropTypes.object).isRequired,
-    // fetching: PropTypes.bool,
-    addLibraryPopup: PropTypes.object,
-    moreLibrariesPopup: PropTypes.object,
-    deleteLibraryDialog: PropTypes.object,
+    name: string,
+    libraries: arrayOf(object).isRequired,
+    // fetching: bool,
 
-    getLibraries: PropTypes.func.isRequired,
-    createLibrary: PropTypes.func.isRequired,
-    deleteLibrary: PropTypes.func.isRequired,
+    addLibraryPopup: object,
+    moreLibrariesPopup: object,
+    deleteLibraryDialog: object,
+
+    getLibraries: func.isRequired,
+    createLibrary: func.isRequired,
+    deleteLibrary: func.isRequired,
+    deleteAllMusic: func.isRequired,
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.props.getLibraries()
   }
 
@@ -27,48 +30,79 @@ export class Manager extends React.Component {
   }
 
   deleteLibrary = () => {
-    this.props.deleteLibrary(this.props.moreLibrariesPopup.from)
+    const {moreLibrariesPopup} = this.props
+
+    if (moreLibrariesPopup) {
+      this.props.deleteLibrary(moreLibrariesPopup.from)
+    }
   }
 
-  render() {
+  deleteAllMusic = () => {
+    this.props.deleteAllMusic()
+  }
+
+  static renderLibraryRow (library) {
+    const { name, created } = library
+
     return (
-      <Page className='container'>
+      <tr key={name}>
+        <th scope='row'>
+          <Link to={`/manager/libraries/${name}`} className='list-group-item-action'>
+            {name}
+          </Link>
+        </th>
+        <td>{created}</td>
+        <td>0</td>
+        <td>0</td>
+        <td>
+          <button type='button' className='btn btn-def fa'
+                  data-for='moreLibrariesPopup' data-click='dropdown' data-from={name}>
+            ...
+          </button>
+        </td>
+      </tr>
+    )
+  }
+
+  render () {
+    const { libraries, moreLibrariesPopup } = this.props
+
+    return (
+      <Page className='Manager container'>
         <h2>Manager</h2>
-        <div className='btn-group card-body'>
+        <div className='Manager__controls btn-group card-body'>
           <button className='btn btn-outline-secondary' onClick={this.createLibrary} data-click='custom'>
             Create Library
           </button>
-          <button className='btn btn-outline-secondary' onClick={this.props.deleteCollections}>
-            Delete Artists
+          <button className='btn btn-outline-secondary' onClick={this.deleteAllMusic} data-click='custom'>
+            Delete All Music
           </button>
-          <button className='btn btn-outline-secondary' onClick={this.props.deleteSongs}>
-            Delete Songs
-          </button>
-          <button className='btn btn-outline-secondary' onClick={this.props.extractSongs}>
-            Extract Songs
+          <button className='btn btn-outline-secondary' onClick={this.props.reImportAllSessions} data-click='custom'>
+            ReImport From All Completed Sessions
           </button>
         </div>
-        <ul className='libraries-list list-group'>
-          {this.props.libraries.map(el =>
-            <li key={el.name}
-                className='list-group-item list-group-item-action
-                           flex-row align-items-center d-flex h-100 justify-content-between'>
-              <Link to={`/manager/libraries/${el.name}`} className='list-group-item-action'>
-                {el.name}
-              </Link>
-              <button type='button' className='btn btn-def fa'
-                      data-for='moreLibrariesPopup' data-click='dropdown' data-from={el.name}>
-                ...
-              </button>
-            </li>
-          )}
-        </ul>
+
+        <table className='Manager__libraries table '>
+          <thead>
+          <tr>
+            <th scope='col'>Name</th>
+            <th scope='col'>Created</th>
+            <th scope='col'>Imports</th>
+            <th scope='col'>Tracks</th>
+            <th scope='col'>More</th>
+          </tr>
+          </thead>
+          <tbody>
+          {libraries.map(Manager.renderLibraryRow)}
+          </tbody>
+        </table>
+
         <div className='dropdown'>
-          {this.props.moreLibrariesPopup ? (
+          {moreLibrariesPopup ? (
             <ul className='dropdown-menu show dropdown_fixed'
                 style={{
-                  top: this.props.moreLibrariesPopup.y - 10,
-                  left: this.props.moreLibrariesPopup.x - 160,
+                  top: moreLibrariesPopup.y - 10,
+                  left: moreLibrariesPopup.x - 160,
                 }}>
               <li onClick={this.deleteLibrary} data-click='custom'>
                 <span className='option fa fa-trash-o'> Delete</span>

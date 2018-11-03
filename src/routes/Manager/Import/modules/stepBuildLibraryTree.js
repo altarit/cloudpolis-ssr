@@ -14,30 +14,27 @@ export function getTree (libraryName, importPath, networkPath, importSessionId) 
     dispatch({
       type: IMPORT_GET_TREE_REQUEST,
       payload: {
-        libraryName: libraryName,
-        mainPath: importPath,
-        networkPath: networkPath,
+        libraryName,
+        importPath,
+        networkPath,
       }
     })
 
     const params = {
       body: JSON.stringify({
-        libraryName: libraryName,
-        mainPath: importPath,
-        networkPath: networkPath,
+        libraryName,
+        importPath,
+        networkPath,
       })
     }
     return fetchPost(`/manager/imports/${importSessionId}/tree`, params)
       .then(({ data }) => {
-        const { children, tracks } = data
+        const { fileTree } = data
 
         dispatch({
           type: IMPORT_GET_TREE_SUCCESS,
           payload: {
-            fileTree: {
-              children,
-              tracks
-            }
+            fileTree
           }
         })
       })
@@ -70,7 +67,6 @@ export function confirmTree (importSessionId) {
       })
   }
 }
-
 
 export const stepBuildLibraryTreeHandlers = {
   [IMPORT_GET_TREE_REQUEST]: (state) => {

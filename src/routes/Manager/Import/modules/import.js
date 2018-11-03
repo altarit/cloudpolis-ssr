@@ -9,6 +9,15 @@ export const IMPORT_SESSION_TREE_GET_SESSION_FAILURE = 'IMPORT_SESSION_TREE_GET_
 
 export const IMPORT_CANCEL_STEP = 'IMPORT_CANCEL_STEP'
 
+export const IMPORT_STATUSES = {
+  INITIALIZED: 'INITIALIZED',
+  CONFIRMED: 'CONFIRMED',
+  PROCESSING_METADATA: 'PROCESSING_METADATA',
+  CANCELLING_PROCESSING_METADATA: 'CANCELLING_PROCESSING_METADATA',
+  PROCESSED_METADATA: 'PROCESSED_METADATA',
+  COMPLETED: 'COMPLETED',
+}
+
 export function cancelStep (step) {
   return {
     type: IMPORT_CANCEL_STEP,
@@ -39,8 +48,6 @@ export function getImportSession (importSessionId) {
 
 const initialState = {
   fetching: false,
-  // importPath: 'F:\\docs\\music\\mlp\\My Little Pony Ost\\mlpost',
-  // networkPath: 'http://localhost',
   session: {},
   fileTree: {},
   importType: 'library',

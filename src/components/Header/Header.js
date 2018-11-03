@@ -29,24 +29,24 @@ export class Header extends React.Component {
                 <span className='navbar__link-label d-sm-none'>Home</span>
               </NavLink>
             </li>
-            <li className='nav-item'>
-              <Link to='/music/libraries' className='nav-link' activeclassname='route--active'>
-                <span className='fa fa-book' />
-                <span className='navbar__link-label'>Libraries</span>
-              </Link>
-            </li>
+            {/*<li className='nav-item'>*/}
+              {/*<Link to='/music/libraries' className='nav-link' activeclassname='route--active'>*/}
+                {/*<span className='fa fa-book' />*/}
+                {/*<span className='navbar__link-label'>Libraries</span>*/}
+              {/*</Link>*/}
+            {/*</li>*/}
             <li className='nav-item'>
               <Link to='/music/artists' className='nav-link' activeclassname='route--active'>
                 <span className='fa fa-music' />
                 <span className='navbar__link-label'>Artists</span>
               </Link>
             </li>
-            <li className='nav-item'>
-              <Link to='/music/playlists' className='nav-link' activeclassname='route--active'>
-                <span className='fa fa-star' />
-                <span className='navbar__link-label'>Playlists</span>
-              </Link>
-            </li>
+            {/*<li className='nav-item'>*/}
+              {/*<Link to='/music/playlists' className='nav-link' activeclassname='route--active'>*/}
+                {/*<span className='fa fa-star' />*/}
+                {/*<span className='navbar__link-label'>Playlists</span>*/}
+              {/*</Link>*/}
+            {/*</li>*/}
             <li className='nav-item'>
               <Link to='/music/search' className='nav-link' activeclassname='route--active'>
                 <span className='fa fa-search' />

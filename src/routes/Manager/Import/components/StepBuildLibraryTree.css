@@ -1,30 +1,26 @@
-.Import {
+.StepBuildLibraryTree {
 
 }
 
-.Import__card {
-  margin: 20px 0;
-}
-
-.Import__dir {
+.StepBuildLibraryTree__dir {
   background: #cccccc;
 }
 
-.Import__dir-children {
-  padding: 0 0 5px 10px;
+.StepBuildLibraryTree__dir-children {
+  padding: 0px 0 5px 10px;
   overflow-x: hidden;
 }
 
-.Import__dir-tracks {
-  padding: 0 0 5px 10px;
+.StepBuildLibraryTree__dir-tracks {
+  padding: 0px 0 5px 10px;
 }
 
-.Import__track {
+.StepBuildLibraryTree__track {
   white-space: nowrap;
   overflow-x: hidden;
 }
 
-.Import .fa {
+.StepBuildLibraryTree .fa {
   width: 20px;
   height: 20px;
   line-height: 20px;

@@ -1,11 +1,13 @@
 import { connect } from 'react-redux'
 
-import { getCompilations, getImportSessions } from '../modules/libraryManager'
+import { getCompilations, getImportSessions, deleteImport, prepareImport } from '../modules/libraryManager'
 import LibraryManager from '../components/LibraryManager'
 
 const mapDispatchToProps = {
   getCompilations,
   getImportSessions,
+  deleteImport,
+  prepareImport,
 }
 
 const mapStateToProps = (state, props) => ({
@@ -14,6 +16,7 @@ const mapStateToProps = (state, props) => ({
   compilations: state.libraryManager.compilations,
   importSessions: state.libraryManager.importSessions,
   importTracks: state.popups.importTracks,
+  moreImportsPopup: state.popups.moreImportsPopup,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LibraryManager)
