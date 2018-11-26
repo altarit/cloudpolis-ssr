@@ -42,7 +42,7 @@ function addPlaylist(name, tabs) {
   }
 }
 
-function excludeOpenPlaylust(openTab, tabs) {
+function excludeOpenPlaylist(openTab, tabs) {
   let index = getTabIndexByName(tabs, openTab)
   if (!~index) return
 
@@ -309,7 +309,7 @@ const ACTION_HANDLERS = {
     return { ...state, tabs: nextTabs, openTab: nextOpenTab, currentTab: nextCurrentTab }
   },
   [types.CLOSE_OPEN_PLAYLIST]: (state, action) => {
-    let closeTabUpdates = excludeOpenPlaylust(state.openTab, state.tabs)
+    let closeTabUpdates = excludeOpenPlaylist(state.openTab, state.tabs)
     return { ...state, tabs: closeTabUpdates.tabs, openTab: closeTabUpdates.openTab }
   },
   [types.CLOSE_OTHER_PLAYLISTS]: (state, action) => {

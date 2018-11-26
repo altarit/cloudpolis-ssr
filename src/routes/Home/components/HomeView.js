@@ -76,7 +76,7 @@ export class HomeView extends Component {
             <h3>More music?</h3>
             There's some more space on the server so I could add something. Either you can set up your own server.
             Fork the <a href='https://github.com/altarit/cloudpolis-koa' target='_blank'>server</a> or
-            the <a href='https://github.com/altarit/cloudpolis-react' target='_blank'>client</a>.
+            the <a href='https://github.com/altarit/cloudpolis-ssr' target='_blank'>client</a>.
           </div>
         </div>
 
