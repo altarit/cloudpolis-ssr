@@ -110,7 +110,13 @@ export function createPlaylist(defaultValue, errorText) {
     }
   }
 
-  return openSingleInput(`Playlist name:`, 'Create', defaultValue, errorText, createLibraryAction)
+  return openSingleInput({
+    title: `Playlist name:`,
+    confirmText: 'Create',
+    defaultValue,
+    errorText,
+    action: createLibraryAction
+  })
 }
 
 export function renamePlaylist(name, defaultValue, errorText) {
@@ -129,7 +135,13 @@ export function renamePlaylist(name, defaultValue, errorText) {
     }
   }
 
-  return openSingleInput(`Renaming ${name}:`, 'Rename', defaultValue, errorText, renamePlaylistAction)
+  return openSingleInput({
+    title: `Renaming ${name}:`,
+    confirmText: 'Rename',
+    defaultValue,
+    errorText,
+    action: renamePlaylistAction
+  })
 }
 
 export function closePlaylist(name) {
@@ -137,14 +149,24 @@ export function closePlaylist(name) {
     type: types.CLOSE_OPEN_PLAYLIST
   }
 
-  return openConfirmation(`Close ${name}?`, 'Yep', 'No, wait', closeAction)
+  return openConfirmation({
+    title: `Close ${name}?`,
+    confirmText: 'Yep',
+    rejectText: 'No, wait',
+    action: closeAction
+  })
 }
 
 export function closeOthersPlaylists(name) {
   const closeAction = {
     type: types.CLOSE_OTHER_PLAYLISTS
   }
-  return openConfirmation(`Close all except ${name}?`, 'All of them!', 'Cancel', closeAction)
+  return openConfirmation({
+    title: `Close all except ${name}?`,
+    confirmText: 'All of them!',
+    rejectText: 'Cancel',
+    action: closeAction
+  })
 }
 
 // --------------------------------

@@ -29,6 +29,8 @@ export class StepBuildLibraryTree extends Component {
 
   handleCancelSession = () => {
     const { importSessionId } = this.props
+
+    this.props.cancelSession(importSessionId)
   }
 
   renderFirstLevel = (fileTree) => {

@@ -1,11 +1,12 @@
 import { connect } from 'react-redux'
 
-import { getTree, confirmTree } from '../modules/stepBuildLibraryTree'
+import { getTree, confirmTree, cancelSession } from '../modules/stepBuildLibraryTree'
 import StepBuildLibraryTree from '../components/StepBuildLibraryTree'
 
 const mapDispatchToProps = {
   getTree,
   confirmTree,
+  cancelSession,
 }
 
 const mapStateToProps = (state, props) => ({

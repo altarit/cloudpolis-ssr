@@ -1,8 +1,6 @@
 import { fetchGet, fetchPost, fetchDelete } from '../../../../modules/apiUtils'
 import { openConfirmation, openSingleInput } from '../../../../modules/popups'
-import { stepBuildLibraryTreeHandlers } from "../../Import/modules/stepBuildLibraryTree"
-import { stepMakeProgressHandlers } from "../../Import/modules/stepMakeProgress"
-import { IMPORT_SESSION_TREE_GET_SESSION_REQUEST } from "../../Import/modules/import"
+import { push } from 'connected-react-router'
 
 export const GET_LIBRARIES_REQUEST = 'GET_LIBRARIES_REQUEST'
 export const GET_LIBRARIES_SUCCESS = 'GET_LIBRARIES_SUCCESS'
@@ -45,20 +43,22 @@ export function getLibraries () {
 }
 
 export function createLibrary (defaultValue) {
-  const createLibraryAction = result => dispatch => {
+  const createLibraryAction = name => dispatch => {
     dispatch({
       type: CREATE_LIBRARIES_REQUEST
     })
 
     fetchPost(`/music/libraries`, {
       body: JSON.stringify({
-        name: result,
+        name,
       })
     })
-      .then(response => {
+      .then(({ data }) => {
         dispatch({
           type: CREATE_LIBRARIES_SUCCESS,
+          name
         })
+        dispatch(push(`/manager/libraries/${name}`))
       })
   }
 
@@ -81,6 +81,8 @@ export function deleteLibrary (name) {
         dispatch({
           type: DELETE_LIBRARY_SUCCESS,
         })
+
+        dispatch(getLibraries())
       })
   }
 
